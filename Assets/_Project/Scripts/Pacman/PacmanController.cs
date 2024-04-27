@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,13 @@ public class PacmanController : MonoBehaviour
     [SerializeField] float _jumpForce = 2.0f;
     [SerializeField] float _gravity = 9.81f;
 
+    public event Action OnShootClicked;
+
     CharacterController _controller;
     Vector3 _velocity;
     float _groundedTimer = 0f;
     float _verticalVelocity = 0f;
+
 
 
     void Awake()
@@ -26,37 +30,11 @@ public class PacmanController : MonoBehaviour
 
     void Update()
     {
-        // Jump();
         Movement();
         Rotation();
-    }
 
-    void Movement2()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 move = new(horizontalInput, 0, verticalInput);
-        move = Vector3.ClampMagnitude(move, 1);
-        move = transform.TransformDirection(move) * _speed;
-
-        // Apply gravity
-        _velocity.y += _gravity * Time.deltaTime;
-
-        // // If the character is grounded and not jumping, set the vertical velocity to keep the character on the ground
-        // if (_controller.isGrounded && _velocity.y < 0)
-        // {
-        //     _velocity.y = -0.5f;
-        // }
-
-
-        if (Input.GetButtonDown("Jump") && _controller.isGrounded)
-        {
-            move.y += Mathf.Sqrt(_jumpForce * -3.0f * _gravity);
-        }
-
-        move.y += _gravity * Time.deltaTime;
-        _controller.Move(move * Time.deltaTime);
+        if (Input.GetButtonDown("Fire1"))
+            OnShootClicked?.Invoke();
     }
 
     void Movement()
@@ -108,13 +86,5 @@ public class PacmanController : MonoBehaviour
 
         // Ensure the player's z rotation stays at 0
         _controller.transform.eulerAngles = new Vector3(_controller.transform.eulerAngles.x, _controller.transform.eulerAngles.y, 0);
-    }
-
-    void Jump()
-    {
-        if (_controller.isGrounded && Input.GetButtonDown("Jump"))
-        {
-            _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravity);
-        }
     }
 }
