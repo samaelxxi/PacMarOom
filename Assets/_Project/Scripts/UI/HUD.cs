@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+    void Awake()
+    {
+        Game.Instance.SetHUD(this);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

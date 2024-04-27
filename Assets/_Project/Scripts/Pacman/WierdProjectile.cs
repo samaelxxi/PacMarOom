@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class WierdProjectile : MonoBehaviour
 {
-    [SerializeField] float _speed = 5f;
     [SerializeField] float _lifeTime = 5f;
 
     Vector3 _velocity;
+    int _damage;
 
     void Start()
     {
-        _velocity = transform.forward * _speed;
+        // _velocity = transform.forward * _speed;
         Destroy(gameObject, _lifeTime);
     }
 
-    public void Setup(Vector3 direction)
+    public void Setup(Vector3 direction, float speed, int damage)
     {
-        Debug.Log("Setup");
-        _velocity = direction * _speed;
+        _velocity = direction * speed;
+        _damage = damage;
     }
 
     void Update()
@@ -29,17 +29,19 @@ public class WierdProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log($"Hit1 {other.gameObject.name}");
         if (other.gameObject.TryGetComponent(out Damageable damageable))
-            damageable.TakeDamage();
+            damageable.TakeDamage(_damage);
 
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Damageable damageable))
-            damageable.TakeDamage();
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log($"Hit2 {other.name}");
+    //     if (other.gameObject.TryGetComponent(out Damageable damageable))
+    //         damageable.TakeDamage(_damage);
 
-        Destroy(gameObject);
-    }
+    //     Destroy(gameObject);
+    // }
 }
