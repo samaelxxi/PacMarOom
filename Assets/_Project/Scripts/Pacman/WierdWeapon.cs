@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WierdWeapon : MonoBehaviour
+public class WierdWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] float _cooldown = 0.5f;
     [SerializeField] WierdProjectile _projectilePrefab;

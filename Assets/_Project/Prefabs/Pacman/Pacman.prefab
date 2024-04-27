@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e34785582e5c9148b73366324b75299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wierdWeapon: {fileID: 1174429836550584023}
 --- !u!143 &4123414736775623185
 CharacterController:
   m_ObjectHideFlags: 0

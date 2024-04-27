@@ -5,19 +5,21 @@ using UnityEngine;
 [SelectionBase]
 public class Pacman : MonoBehaviour
 {
-    PacmanController _controller;
+    [SerializeField] WierdWeapon _wierdWeapon;
 
-    WierdWeapon _weapon;
+    PacmanController _controller;
+    IWeapon _currentWeapon;
 
     void Awake()
     {
         _controller = GetComponent<PacmanController>();
         _controller.OnShootClicked += Shoot;
+        _currentWeapon = _wierdWeapon;
     }
 
     void Shoot()
     {
-        _weapon.TryShoot();
+        _currentWeapon.TryShoot();
     }
 
     // Update is called once per frame
