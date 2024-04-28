@@ -31,7 +31,6 @@ public class Pacman : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
             Game.Instance.RespawnPacman();
-        
     }
 
     public void Respawn(Transform checkpoint)

@@ -33,17 +33,10 @@ public class Invader : NPC
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         _fsm.OnUpdate();
-    }
-
-    public override void TakeDamage(int damage)
-    {
-        Debug.Log("Auch2");
-        _health -= damage;
-        if (_health <= 0)
-            Destroy(gameObject);
     }
 
 
@@ -64,7 +57,7 @@ public class Invader : NPC
                 _idleMoveRight = !_idleMoveRight;
                 _idleStateTimer = 0;
             }
-            if (IsPlayerInSight())
+            if (_isAware)
                 fsm.TransitionTo(_chaseState);
         }
     }

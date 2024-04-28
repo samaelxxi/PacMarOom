@@ -28,7 +28,6 @@ public class InvaderProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Hit1 {other.gameObject.name}");
         if (other.gameObject.TryGetComponent(out Pacman pacman))
         {
             pacman.GetDamage(_damage);

@@ -50,8 +50,9 @@ public class Ghostie : NPC
         _shouldPatrol = _patrolArea != null;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         _fsm.OnUpdate();
         _attackCooldownTimer -= Time.deltaTime;
     }
@@ -77,7 +78,7 @@ public class Ghostie : NPC
         else if (step == Fsm.Step.Update)
         {
             _idleStateTimer += Time.deltaTime;
-            if (IsPlayerInSight())
+            if (_isAware)
                 fsm.TransitionTo(_chaseState);
             else if (_shouldPatrol && _idleStateTimer > _idleWaitTime)
                 fsm.TransitionTo(_patrolState);
@@ -92,7 +93,7 @@ public class Ghostie : NPC
         }
         else if (step == Fsm.Step.Update)
         {
-            if (IsPlayerInSight())
+            if (_isAware)
                 fsm.TransitionTo(_chaseState);
             else if (Vector3.Distance(transform.position, _targetPosition) < 0.5f)
                 fsm.TransitionTo(_idleState);
@@ -119,7 +120,7 @@ public class Ghostie : NPC
     {
         if (step == Fsm.Step.Update)
         {
-            if (IsPlayerTooFar())
+            if (!_isAware)
             {
                 fsm.TransitionTo(_idleState);
                 return;

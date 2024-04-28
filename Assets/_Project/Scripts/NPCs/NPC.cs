@@ -19,22 +19,31 @@ public class NPC : MonoBehaviour
     protected int _health;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected bool _isAware;
+    protected float _awareTimer;
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        if (_isAware)
+        {
+            _awareTimer += Time.deltaTime;
+            if (IsPlayerTooFar() && _awareTimer > 5)
+                _isAware = false;
+        }
+        else if (IsPlayerInSight())
+        {
+            _isAware = true;
+            _awareTimer = 0;
+        }
     }
 
     public virtual void TakeDamage(int damage)
     {
         Debug.Log("Auch");
         _health -= damage;
+        if (!_isAware)
+            _isAware = true;
         if (_health <= 0)
             Destroy(gameObject);
     }
