@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172a8b29075f2664fac3cdadf2b54dd5, type: 3}
-  m_Name: DefaultGhostieStats
+  m_Name: OrangeGhostieStats
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 2
   <RotationSpeed>k__BackingField: 180
