@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: f3a40e6e7c54c4a47a0d3d71c116fa09, type: 2}
-  _shouldPatrol: 0
   _patrolArea: {fileID: 0}
   _attackArea: {fileID: 5678900318206516044}
   _attackTrigger: {fileID: 6344709657264782348}
@@ -136,8 +135,8 @@ Transform:
   m_GameObject: {fileID: 7516671191115379063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.87}
-  m_LocalScale: {x: 1.8466, y: 2.1266, z: 0.49014}
+  m_LocalPosition: {x: 0, y: 0.329, z: 0.87}
+  m_LocalScale: {x: 1.8466, y: 1.3442674, z: 0.49014}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2894295068789137223}
