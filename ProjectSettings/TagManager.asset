@@ -15,7 +15,7 @@ TagManager:
   - Pacman
   - Projectile
   - Enemy
-  - 
+  - Geometry
   - EnemyProjectile
   - DamageArea
   - 
