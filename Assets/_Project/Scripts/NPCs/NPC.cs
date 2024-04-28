@@ -9,7 +9,6 @@ public class NPC : MonoBehaviour
 
     protected Vector3 _targetPosition;
     protected Vector3 TargetDirection => _targetPosition - transform.position;
-    protected float TargetAngle => Vector3.Angle(transform.forward, TargetDirection);
 
     protected virtual float RotationSpeed => 0;
     protected virtual float Speed => 0;
@@ -50,19 +49,37 @@ public class NPC : MonoBehaviour
 
     protected void RotateTowardsTarget()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, 
+        Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, 
                              Quaternion.LookRotation(TargetDirection), 
                              RotationSpeed * Time.deltaTime);
+        newRotation = Quaternion.Euler(0, newRotation.eulerAngles.y, 0);
+        transform.rotation = newRotation;
     }
+
+    protected float TargetAngle()
+    {
+        Vector3 targetDirection = TargetDirection;
+        targetDirection.y = 0; // Ignore vertical difference with target
+
+        Vector3 npcForward = transform.forward;
+        npcForward.y = 0; // Ignore vertical orientation of the NPC
+
+        float angle = Vector3.Angle(npcForward, targetDirection);
+
+        return Mathf.Abs(angle);
+    }
+
 
     protected void MoveAndRotateTowardsTarget()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, 
-            Quaternion.LookRotation(TargetDirection), 
-            RotationSpeed * Time.deltaTime);
-        if (TargetAngle < 10)
+        RotateTowardsTarget();
+        if (TargetAngle() < 10)
+        {
+            Vector3 targetPos = transform.position + TargetDirection.normalized;
+
             transform.position = Vector3.MoveTowards(transform.position, 
-                transform.position + transform.forward, Speed * Time.deltaTime);
+                targetPos, Speed * Time.deltaTime);
+        }
     }
 
     protected bool IsPlayerInSight()

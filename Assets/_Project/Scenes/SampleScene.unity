@@ -241,26 +241,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvaderRow
       objectReference: {fileID: 0}
-    - target: {fileID: 599963828482381398, guid: 7a7148351006de249bafb4f6165fedbc,
-        type: 3}
-      propertyPath: _cellWidth
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7461191407665609736, guid: 7a7148351006de249bafb4f6165fedbc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 7461191407665609736, guid: 7a7148351006de249bafb4f6165fedbc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 7461191407665609736, guid: 7a7148351006de249bafb4f6165fedbc,
         type: 3}
@@ -1378,6 +1358,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194792292439448157, guid: 3b8b32ffeece1ef4c8b955c8aa7dae25,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.208
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194792292439448157, guid: 3b8b32ffeece1ef4c8b955c8aa7dae25,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 5772083495133777060, guid: 3b8b32ffeece1ef4c8b955c8aa7dae25,
         type: 3}

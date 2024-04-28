@@ -126,11 +126,15 @@ public class Ghostie : NPC
                 return;
             }
 
-            _targetPosition = Game.Instance.Pacman.transform.position;
-
-            if (Vector3.Distance(transform.position, _targetPosition) > _stats.AttackRange)
+            Transform pacman = Game.Instance.Pacman.transform;
+            _targetPosition = pacman.position;
+            _targetPosition = pacman.position - TargetDirection.normalized;
+            _targetPosition = _targetPosition.SetY(pacman.position.y);
+            float dist = Vector3.Distance(transform.position, pacman.position);
+            float dist2 = Vector3.Distance(transform.position, _targetPosition);
+            if (Vector3.Distance(transform.position, _targetPosition) > _stats.AttackRange-1)
                 MoveAndRotateTowardsTarget();
-            else if (_attackCooldownTimer <= 0 && TargetAngle < 10)
+            else if (_attackCooldownTimer <= 0 && TargetAngle() < 10)
                 fsm.TransitionTo(_attackState);
             else
                 RotateTowardsTarget();
@@ -146,7 +150,9 @@ public class Ghostie : NPC
             _attackDamageDealt = false;
             _attackStateTimer = 0;
             _attackArea.gameObject.SetActive(true);
-            transform.DOMove(_targetPosition, _stats.AttackDuration).SetEase(Ease.InOutCubic).SetDelay(_stats.AttackDelay);
+            _targetPosition = Game.Instance.Pacman.transform.position;
+            Vector3 attackPos = transform.position + TargetDirection.normalized * _stats.AttackRange;
+            transform.DOMove(attackPos, _stats.AttackDuration).SetEase(Ease.InOutCubic).SetDelay(_stats.AttackDelay);
         }
         else if (step == Fsm.Step.Update)
         {
@@ -169,5 +175,9 @@ public class Ghostie : NPC
         Gizmos.DrawWireSphere(transform.position, _stats.SightRange);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _stats.ForgetRange);
+
+        Gizmos.color = Color.blue;
+        if (_targetPosition != null)
+            Gizmos.DrawWireSphere(_targetPosition, 0.5f);
     }
 }

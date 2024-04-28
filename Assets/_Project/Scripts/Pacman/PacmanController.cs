@@ -15,6 +15,8 @@ public class PacmanController : MonoBehaviour
 
     PacmanStats _stats;
 
+    Camera _camera;
+
     public void Setup(PacmanStats stats)
     {
         _stats = stats;
@@ -26,6 +28,7 @@ public class PacmanController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        _camera = Camera.main;
     }
 
     void Update()
@@ -83,9 +86,16 @@ public class PacmanController : MonoBehaviour
 
     void Rotation()
     {
+        Vector2 view = _camera.ScreenToViewportPoint( Input.mousePosition );
+        bool isOutside = view.x < 0 || view.x > 1 || view.y < 0 || view.y > 1;
+        if (isOutside)
+            return;
+
         // Get the mouse's movement
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
+
+
 
         // Apply the mouse movement as rotation
         Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * _stats.MouseSensitivity;

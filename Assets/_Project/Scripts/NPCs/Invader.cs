@@ -25,7 +25,7 @@ public class Invader : MonoBehaviour
     {
         _health -= damage;
         if (_health <= 0)
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 
     public void Move(Vector3 displacement)
@@ -40,7 +40,7 @@ public class Invader : MonoBehaviour
 
     void Shoot()
     {
-        var projectile = Instantiate(_projectilePrefab, _shootPoint.position, transform.rotation, transform);
+        var projectile = Instantiate(_projectilePrefab, _shootPoint.position, transform.rotation, transform.parent);
         projectile.Setup(transform.forward, _stats.ProjectileSpeed, _stats.Damage);
         PrepareShoot();
     }
