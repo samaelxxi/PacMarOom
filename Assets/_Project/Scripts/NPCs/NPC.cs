@@ -14,37 +14,46 @@ public class NPC : MonoBehaviour
     protected virtual float Speed => 0;
     protected virtual float SightRange => 0;
     protected virtual float ForgetRange => 0;
+    protected virtual float InvulnerableTime => 1;
 
     protected int _health;
 
 
-    protected bool _isAware;
     protected float _awareTimer;
 
-    // Update is called once per frame
+    protected float _invulnerableTimer;
+
+    MeshRenderer _meshRenderer;
+
+
+    protected virtual void Awake()
+    {
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+    }
+
     protected virtual void Update()
     {
-        if (_isAware)
-        {
-            _awareTimer += Time.deltaTime;
-            if (IsPlayerTooFar() && _awareTimer > 5)
-                _isAware = false;
-        }
-        else if (IsPlayerInSight())
-        {
-            _isAware = true;
-            _awareTimer = 0;
-        }
+        if (_invulnerableTimer > 0)
+            _invulnerableTimer -= Time.deltaTime;
     }
 
     public virtual void TakeDamage(int damage)
     {
+        if (_invulnerableTimer > 0)
+            return;
         Debug.Log("Auch");
         _health -= damage;
-        if (!_isAware)
-            _isAware = true;
         if (_health <= 0)
             Destroy(gameObject);
+        else
+            BecomeInvulnerable(InvulnerableTime);
+    }
+
+    protected void BecomeInvulnerable(float duration)
+    {
+        _invulnerableTimer = duration;
+        _meshRenderer.material.SetFloat("_IsDamagedFloat", 1);
+        this.InSeconds(duration, () => _meshRenderer.material.SetFloat("_IsDamagedFloat", 0));
     }
 
     protected void RotateTowardsTarget()

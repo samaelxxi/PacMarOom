@@ -9,4 +9,5 @@ public class InvaderStats : ScriptableObject
     [field: SerializeField] public int Health { get; private set; }
     [field: SerializeField] public float ProjectileSpeed { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
+    [field: SerializeField] public float InvulnerableTime { get; private set; } = 1;
 }

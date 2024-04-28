@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4874919599369618640}
   - component: {fileID: 8490146536409101454}
   - component: {fileID: 3399451332595767830}
-  m_Layer: 0
+  - component: {fileID: 9207789223568446846}
+  m_Layer: 9
   m_Name: GhostieBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!136 &9207789223568446846
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937397371467032686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.46266758
+  m_Height: 1.1000513
+  m_Direction: 1
+  m_Center: {x: -0.00031241777, y: 0.43080994, z: 0.008879633}
 --- !u!1 &7516671191115379063
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +310,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4679a30089cc3674a8dff29412e4e790, type: 2}
+      objectReference: {fileID: 2100000, guid: d7bab50b4752dc3419ed14d3eb74ec8e, type: 2}
     - target: {fileID: 919132149155446097, guid: ed5d907b80e506340ad24a1119b37eef,
         type: 3}
       propertyPath: m_Name
@@ -295,41 +319,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed5d907b80e506340ad24a1119b37eef,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 255010164937762900}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed5d907b80e506340ad24a1119b37eef, type: 3}
---- !u!1 &6270072415622459316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed5d907b80e506340ad24a1119b37eef,
-    type: 3}
-  m_PrefabInstance: {fileID: 6612036824349790949}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &255010164937762900
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6270072415622459316}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.46266758
-  m_Height: 1.1000513
-  m_Direction: 1
-  m_Center: {x: -0.00031241777, y: 0.43080994, z: 0.008879633}
 --- !u!4 &6649587977466328334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed5d907b80e506340ad24a1119b37eef,

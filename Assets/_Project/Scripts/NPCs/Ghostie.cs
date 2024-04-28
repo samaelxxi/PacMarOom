@@ -24,7 +24,9 @@ public class Ghostie : NPC
     protected override float Speed => _stats.Speed;
     protected override float SightRange => _stats.SightRange;
     protected override float ForgetRange => _stats.ForgetRange;
-
+    protected override float InvulnerableTime => _stats.InvulnerableTime;
+    
+    bool _isAware;
     bool _attackDamageDealt;
     bool _shouldPatrol;
 
@@ -53,8 +55,27 @@ public class Ghostie : NPC
     protected override void Update()
     {
         base.Update();
-        _fsm.OnUpdate();
         _attackCooldownTimer -= Time.deltaTime;
+
+        if (_isAware)
+        {
+            _awareTimer += Time.deltaTime;
+            if (IsPlayerTooFar() && _awareTimer > 5)
+                _isAware = false;
+        }
+        else if (IsPlayerInSight())
+        {
+            _isAware = true;
+            _awareTimer = 0;
+        }
+
+        _fsm.OnUpdate();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        _isAware = true;
     }
 
     void DamagePacman(Collider other)

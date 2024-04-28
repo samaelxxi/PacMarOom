@@ -106,4 +106,28 @@ public class PacmanController : MonoBehaviour
         // Ensure the player's z rotation stays at 0
         _controller.transform.eulerAngles = new Vector3(_controller.transform.eulerAngles.x, _controller.transform.eulerAngles.y, 0);
     }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // check collider layer
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Vector3 normal = hit.normal;
+            Vector3 direction = (hit.gameObject.transform.position - transform.position).normalized;
+            float normalDot = Vector3.Dot(normal, Vector3.up);
+            float directionDot = Vector3.Dot(direction, Vector3.down);
+
+            // Debug.Log($"Pacman hit enemy {hit.collider.gameObject.name} with normal {normal} and direction {direction} | normal dot: {normalDot} | direction dot: {directionDot}");
+            if (normalDot > 0.5f && directionDot > 0.5f)
+            {
+                // Debug.Log("Pacman hit enemy from above");
+                if (hit.collider.TryGetComponent(out Damageable damageable))
+                {
+                    // Debug.Log("Pacman hit enemy from above and it's damageable");
+                    damageable.TakeDamage(_stats.JumpDamage);
+                    _verticalVelocity = Mathf.Sqrt(_stats.JumpForce * _stats.Gravity);
+                }
+            }
+        }
+    }
 }

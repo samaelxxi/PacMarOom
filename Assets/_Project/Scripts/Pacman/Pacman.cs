@@ -12,6 +12,7 @@ public class Pacman : MonoBehaviour
     IWeapon _currentWeapon;
 
     int _health;
+    float _invulnerableTimer = 0f;
 
     void Awake()
     {
@@ -27,8 +28,11 @@ public class Pacman : MonoBehaviour
 
     public void GetDamage(int damage)
     {
+        if (_invulnerableTimer > 0)
+            return;
         Debug.Log("PacmanAuch");
         _health -= damage;
+        _invulnerableTimer = _stats.InvulnerableTime;
         if (_health <= 0)
             Game.Instance.RespawnPacman();
     }
@@ -46,6 +50,7 @@ public class Pacman : MonoBehaviour
 
     void Update()
     {
-        
+        if (_invulnerableTimer > 0)
+            _invulnerableTimer -= Time.deltaTime;
     }
 }

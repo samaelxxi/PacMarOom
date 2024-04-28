@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invader : MonoBehaviour
+public class Invader : NPC
 {
     [SerializeField] InvaderStats _stats;
     [SerializeField] InvaderProjectile _projectilePrefab;
     [SerializeField] Transform _shootPoint;
 
+    protected override float InvulnerableTime => _stats.InvulnerableTime;
 
-    int _health;
     float _shootTime;
 
     public void SetShootTime(float time) => _shootTime = time;
@@ -21,11 +21,16 @@ public class Invader : MonoBehaviour
         _health = _stats.Health;
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
+        if (_invulnerableTimer > 0)
+            return;
+
         _health -= damage;
         if (_health <= 0)
             gameObject.SetActive(false);
+        else
+            BecomeInvulnerable(InvulnerableTime);
     }
 
     public void Move(Vector3 displacement)
