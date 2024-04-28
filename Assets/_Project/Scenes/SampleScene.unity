@@ -241,6 +241,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvaderRow
       objectReference: {fileID: 0}
+    - target: {fileID: 599963828482381398, guid: 7a7148351006de249bafb4f6165fedbc,
+        type: 3}
+      propertyPath: _cellWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761097561083347000, guid: 7a7148351006de249bafb4f6165fedbc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7461191407665609736, guid: 7a7148351006de249bafb4f6165fedbc,
         type: 3}
       propertyPath: m_LocalPosition.x

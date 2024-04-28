@@ -48,7 +48,7 @@ MonoBehaviour:
   _invaderCount: 5
   _rowWidth: 10
   _initialInvaderIndex: 2
-  _cellWidth: 1.5
+  _cellWidth: 2
   _moveTime: 1.5
   _averageShootTime: 2
   _initialDirectionIsRight: 1
@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 3833683851536544415, guid: 559e1631a95b5c146a33eaf56e6c7894,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3833683851536544415, guid: 559e1631a95b5c146a33eaf56e6c7894,
         type: 3}
