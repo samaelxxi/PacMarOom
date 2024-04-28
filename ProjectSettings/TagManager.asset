@@ -12,12 +12,12 @@ TagManager:
   - Water
   - UI
   - 
+  - Pacman
+  - Projectile
+  - Enemy
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - DamageArea
   - 
   - 
   - 
