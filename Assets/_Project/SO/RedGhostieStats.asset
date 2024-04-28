@@ -16,7 +16,7 @@ MonoBehaviour:
   <RotationSpeed>k__BackingField: 180
   <ChaseSpeed>k__BackingField: 6
   <Damage>k__BackingField: 1
-  <Health>k__BackingField: 3
+  <Health>k__BackingField: 2
   <SightRange>k__BackingField: 9
   <ForgetRange>k__BackingField: 14
   <AttackDelay>k__BackingField: 0.2
