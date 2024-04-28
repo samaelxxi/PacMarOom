@@ -25,12 +25,26 @@ public class Pacman : MonoBehaviour
         Game.Instance.SetPacman(this);
     }
 
+    public void GetDamage(int damage)
+    {
+        Debug.Log("PacmanAuch");
+        _health -= damage;
+        if (_health <= 0)
+            Game.Instance.RespawnPacman();
+        
+    }
+
+    public void Respawn(Transform checkpoint)
+    {
+        _health = _stats.Health;
+        _controller.Teleport(checkpoint);
+    }
+
     void Shoot()
     {
         _currentWeapon.TryShoot();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

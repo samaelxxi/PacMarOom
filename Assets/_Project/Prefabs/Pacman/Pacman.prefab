@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 2309652252925977447}
   - component: {fileID: 4123414736775623185}
   - component: {fileID: 8907296421268560041}
+  - component: {fileID: 3897629558326638775}
   m_Layer: 7
   m_Name: Pacman
   m_TagString: Untagged
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wierdWeapon: {fileID: 1174429836550584023}
-  _stats: {fileID: 0}
+  _stats: {fileID: 11400000, guid: 5e92204d31546ef4f9200a2b4072b3bf, type: 2}
 --- !u!143 &4123414736775623185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -216,8 +217,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.97
-  m_Radius: 0.09
+  m_Height: 1
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -235,6 +236,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f64e497421b62a448f8930b963ed0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3897629558326638775
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232017583622002103}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5118081076040865414
 GameObject:
   m_ObjectHideFlags: 0

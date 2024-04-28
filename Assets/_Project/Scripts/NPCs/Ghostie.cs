@@ -6,25 +6,28 @@ using UnityEngine.UIElements;
 using DG.Tweening;
 
 [SelectionBase]
-public class Ghostie : MonoBehaviour
+public class Ghostie : NPC
 {
     [SerializeField] GhostieStats _stats;
-    [SerializeField] bool _shouldPatrol;
     [SerializeField] BoxCollider _patrolArea;
     [SerializeField] BoxCollider _attackArea;
+    [SerializeField] TriggerObserver _attackTrigger;
 
-    Fsm _fsm;
 
     Fsm.State _idleState;
     Fsm.State _patrolState;
     Fsm.State _chaseState;
     Fsm.State _attackState;
 
-    Vector3 _targetPosition;
-    int _health;
 
-    Vector3 TargetDirection => _targetPosition - transform.position;
-    float TargetAngle => Vector3.Angle(transform.forward, TargetDirection);
+    protected override float RotationSpeed => _stats.RotationSpeed;
+    protected override float Speed => _stats.Speed;
+    protected override float SightRange => _stats.SightRange;
+    protected override float ForgetRange => _stats.ForgetRange;
+
+    bool _attackDamageDealt;
+    bool _shouldPatrol;
+
 
     void Start()
     {
@@ -37,6 +40,14 @@ public class Ghostie : MonoBehaviour
 
         _fsm = new Fsm();
         _fsm.Start(_idleState);
+
+        _attackTrigger.SetTestPredicate((Collider other) => other.gameObject == Game.Instance.Pacman.gameObject);
+        _attackTrigger.OnTriggerEnterEvent += DamagePacman;
+
+        if (_patrolArea == null && gameObject.transform.parent != null &&
+            gameObject.transform.parent.TryGetComponent(out BoxCollider boxCollider))
+            _patrolArea = boxCollider;
+        _shouldPatrol = _patrolArea != null;
     }
 
     void Update()
@@ -45,13 +56,14 @@ public class Ghostie : MonoBehaviour
         _attackCooldownTimer -= Time.deltaTime;
     }
 
-    public void TakeDamage(int damage)
+    void DamagePacman(Collider other)
     {
-        Debug.Log("Auch");
-        _health -= damage;
-        if (_health <= 0)
-            Destroy(gameObject);
+        if (_attackDamageDealt)
+            return;
+        other.GetComponent<Pacman>().GetDamage(_stats.Damage);
+        _attackDamageDealt = true;
     }
+
 
     float _idleStateTimer;
     float _idleWaitTime;
@@ -130,6 +142,7 @@ public class Ghostie : MonoBehaviour
     {
         if (step == Fsm.Step.Enter)
         {
+            _attackDamageDealt = false;
             _attackStateTimer = 0;
             _attackArea.gameObject.SetActive(true);
             transform.DOMove(_targetPosition, _stats.AttackDuration).SetEase(Ease.InOutCubic).SetDelay(_stats.AttackDelay);
@@ -148,33 +161,6 @@ public class Ghostie : MonoBehaviour
     }
 
 
-
-    void RotateTowardsTarget()
-    {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, 
-                             Quaternion.LookRotation(TargetDirection), 
-                             _stats.RotationSpeed * Time.deltaTime);
-    }
-
-    void MoveAndRotateTowardsTarget()
-    {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, 
-            Quaternion.LookRotation(TargetDirection), 
-            _stats.RotationSpeed * Time.deltaTime);
-        if (TargetAngle < 10)
-            transform.position = Vector3.MoveTowards(transform.position, 
-                transform.position + transform.forward, _stats.Speed * Time.deltaTime);
-    }
-
-    bool IsPlayerInSight()
-    {
-        return Vector3.Distance(transform.position, Game.Instance.Pacman.transform.position) < _stats.SightRange;
-    }
-
-    bool IsPlayerTooFar()
-    {
-        return Vector3.Distance(transform.position, Game.Instance.Pacman.transform.position) > _stats.ForgetRange;
-    }
 
     void OnDrawGizmosSelected()
     {

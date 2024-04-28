@@ -52,6 +52,7 @@ MonoBehaviour:
   _shouldPatrol: 0
   _patrolArea: {fileID: 0}
   _attackArea: {fileID: 5678900318206516044}
+  _attackTrigger: {fileID: 6344709657264782348}
 --- !u!54 &8490146536409101454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -118,6 +119,7 @@ GameObject:
   - component: {fileID: 8294145704526664273}
   - component: {fileID: 2342467137897898345}
   - component: {fileID: 5678900318206516044}
+  - component: {fileID: 6344709657264782348}
   m_Layer: 12
   m_Name: AttackArea
   m_TagString: Untagged
@@ -211,6 +213,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6344709657264782348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516671191115379063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ba0f97f72d86d47a7f8ff52cd6a2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6612036824349790949
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -37,9 +37,18 @@ public class PacmanController : MonoBehaviour
             OnShootClicked?.Invoke();
     }
 
+    public void Teleport(Transform checkpoint)
+    {
+        _controller.enabled = false;
+        transform.position = checkpoint.position;
+        transform.rotation = checkpoint.rotation;
+        _controller.enabled = true;
+    }
+
     void Movement()
     {
         bool isGrounded = _controller.isGrounded;
+
 
         if (isGrounded)
             _groundedTimer = 0.2f;
