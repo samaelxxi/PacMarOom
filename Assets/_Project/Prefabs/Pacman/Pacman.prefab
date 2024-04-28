@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wierdWeapon: {fileID: 1174429836550584023}
+  _stats: {fileID: 0}
 --- !u!143 &4123414736775623185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -215,8 +216,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
-  m_Radius: 1
+  m_Height: 1.97
+  m_Radius: 0.09
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -234,10 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f64e497421b62a448f8930b963ed0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _mouseSensitivity: 2
-  _jumpForce: 1.5
-  _gravity: 20
 --- !u!1 &5118081076040865414
 GameObject:
   m_ObjectHideFlags: 0

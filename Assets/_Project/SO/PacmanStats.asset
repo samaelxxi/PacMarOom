@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PacmanStats
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 3
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 2.5
   <MouseSensitivity>k__BackingField: 2
-  <Gravity>k__BackingField: 20
-  <JumpForce>k__BackingField: 2
+  <Gravity>k__BackingField: 40
+  <JumpForce>k__BackingField: 5
   <WierdDamage>k__BackingField: 1
   <WierdShootCooldown>k__BackingField: 0.5
   <WierdProjectileSpeed>k__BackingField: 20
