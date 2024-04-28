@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 2
   <RotationSpeed>k__BackingField: 90
-  <ChaseSpeed>k__BackingField: 2
+  <ChaseSpeed>k__BackingField: 3
   <Damage>k__BackingField: 1
-  <Health>k__BackingField: 5
+  <Health>k__BackingField: 4
   <SightRange>k__BackingField: 12
   <ForgetRange>k__BackingField: 14
   <AttackDelay>k__BackingField: 0.4
