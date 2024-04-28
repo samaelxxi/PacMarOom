@@ -29,19 +29,9 @@ public class WierdProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log($"Hit1 {other.gameObject.name}");
         if (other.gameObject.TryGetComponent(out Damageable damageable))
             damageable.TakeDamage(_damage);
 
         Destroy(gameObject);
     }
-
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log($"Hit2 {other.name}");
-    //     if (other.gameObject.TryGetComponent(out Damageable damageable))
-    //         damageable.TakeDamage(_damage);
-
-    //     Destroy(gameObject);
-    // }
 }

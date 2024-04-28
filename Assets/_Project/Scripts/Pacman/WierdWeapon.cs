@@ -21,13 +21,11 @@ public class WierdWeapon : MonoBehaviour, IWeapon
 
     public void TryShoot()
     {
-        Debug.Log("TryShoot");
         if (_cooldownTimer > 0)
             return;
 
         _cooldownTimer = _stats.WierdShootCooldown;
 
-        Debug.Log("Shoot");
         WierdProjectile projectile = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
         projectile.Setup(_shootPoint.forward, _stats.WierdProjectileSpeed, _stats.WierdDamage);
     }

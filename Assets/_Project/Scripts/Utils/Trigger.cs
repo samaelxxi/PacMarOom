@@ -5,14 +5,30 @@ using UnityEngine.Events;
 
 public class Trigger : MonoBehaviour
 {
-    [SerializeField] UnityEvent _onTriggerEnter;
+    [SerializeField] protected UnityEvent _onTriggerEnter;
+    [SerializeField] protected bool _onlyOnce;
+    [SerializeField] protected bool _resetOnRespawn;
 
-    [SerializeField] LayerMask _layerMask;
+    [SerializeField] protected LayerMask _layerMask;
 
-    void OnTriggerEnter(Collider other)
+    protected bool _triggered;
+
+    protected virtual void Start()
     {
+        if (_resetOnRespawn)
+            Game.Instance.OnPacmanRespawn += () => _triggered = false;
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (_triggered && _onlyOnce)
+            return;
+
         if ((_layerMask.value & 1 << other.gameObject.layer) != 0)
+        {
             _onTriggerEnter.Invoke();
+            _triggered = true;
+        }
     }
 
     public void PacmanRespawn()
@@ -23,5 +39,10 @@ public class Trigger : MonoBehaviour
     public void SetNewCheckpoint(Transform checkpoint)
     {
         Game.Instance.SetNewCheckpoint(checkpoint);
+    }
+
+    public void SpawnEnemy(EnemyType type, Transform spawnPoint)
+    {
+        Game.Instance.SpawnEnemy(type, spawnPoint);
     }
 }

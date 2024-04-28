@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af13b8d4b2fa0b44f827205f857cf37d, type: 3}
+  m_Name: EnemySpawner
+  m_EditorClassIdentifier: 
+  _invaderPrefab: {fileID: 2134938246318694919, guid: 559e1631a95b5c146a33eaf56e6c7894,
+    type: 3}
+  _blueGhostPrefab: {fileID: 3937397371467032686, guid: 9962cb01c279577498ef0e06ee14ef8d,
+    type: 3}
+  _redGhostPrefab: {fileID: 895395073792341207, guid: 78481158186386144ad284fa25d408d6,
+    type: 3}
+  _pinkGhostPrefab: {fileID: 2848694386363729712, guid: 9bbb766ba1daddb499f322b74382ed80,
+    type: 3}
+  _orangeGhostPrefab: {fileID: 7659965717683226424, guid: de1fe16330ee1ec4da5cdd721ec33b7e,
+    type: 3}

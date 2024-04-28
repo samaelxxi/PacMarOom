@@ -113,6 +113,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onlyOnce: 1
+  _resetOnRespawn: 0
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
