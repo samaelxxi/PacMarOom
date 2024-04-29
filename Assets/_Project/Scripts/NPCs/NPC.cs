@@ -27,7 +27,7 @@ public class NPC : IResetable, IDeadable
     MeshRenderer _meshRenderer;
 
 
-    bool _isDead = false;
+    protected bool _isDead = false;
     bool _isSpawned = false;
     public bool IsSpawned => _isSpawned;
 
@@ -55,7 +55,6 @@ public class NPC : IResetable, IDeadable
         transform.rotation = _startRotation;
         _health = Health;
         _isDead = false;
-        Debug.Log("Resetting NPC");
         gameObject.SetActive(true);
     }
 
