@@ -13,4 +13,9 @@ public class HUD : MonoBehaviour
     {
         Debug.Log("Score: " + score);
     }
+
+    public void SetNewWieirdAmmo(int ammo)
+    {
+        Debug.Log("Ammo: " + ammo);
+    }
 }

@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
 
     public Transform PlayerSpawnPoint => _playerSpawnPoint;
 
+    public event Action<int> OnScoreChanged;
 
     public int Score => _score;
     int _score = 0;
@@ -23,9 +24,12 @@ public class Level : MonoBehaviour
         _playerSpawnPoint.position = checkpoint.position;
     }
 
+
+
     public void AddScore(int score)
     {
         _score += score;
+        OnScoreChanged?.Invoke(_score);
     }
 
     void Start()

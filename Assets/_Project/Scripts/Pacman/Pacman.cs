@@ -9,6 +9,9 @@ public class Pacman : MonoBehaviour
     [SerializeField] PigCatcher _pigCatcher;
     [SerializeField] PacmanStats _stats;
 
+    public WierdWeapon WierdWeapon => _wierdWeapon;
+    
+
     PacmanController _controller;
     IWeapon _currentWeapon;
 
@@ -56,6 +59,8 @@ public class Pacman : MonoBehaviour
         _pigCatcher.gameObject.SetActive(weapon == 1);
         _currentWeapon.Equip();
     }
+
+
 
     public void Respawn(Transform checkpoint)
     {

@@ -43,6 +43,12 @@ public class Game : Singleton<Game>
         }
     }
 
+    public void Start()
+    {
+        _pacman.WierdWeapon.OnAmmoChanged += _hud.SetNewWieirdAmmo;
+        _level.OnScoreChanged += _hud.SetNewScore;
+    }
+
     public void RespawnPacman()
     {
         if (_level == null)
@@ -57,7 +63,11 @@ public class Game : Singleton<Game>
     public void AddScore(int score)
     {
         _level.AddScore(score);
-        _hud.SetNewScore(_level.Score);
+    }
+
+    public void AddWierdAmmo(int ammo)
+    {
+        _pacman.WierdWeapon.AddAmmo(ammo);
     }
 
     public void SpawnEnemy(EnemyType type, Transform spawnPoint)
