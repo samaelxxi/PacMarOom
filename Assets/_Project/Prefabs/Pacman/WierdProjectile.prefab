@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 5
+  _bulletHit: {fileID: 4653067868907292488, guid: 5e51760dcbb5ed540b61c229d82ced42,
+    type: 3}
 --- !u!33 &5155392494355206800
 MeshFilter:
   m_ObjectHideFlags: 0
