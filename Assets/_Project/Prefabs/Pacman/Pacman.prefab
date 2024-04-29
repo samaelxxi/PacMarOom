@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7045190137124505976}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6330423855737161137}
   - component: {fileID: 4405789303221791472}
   - component: {fileID: 4857977938778076707}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Mesh (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 58f58f6383003fd4a91e5e36e13a2618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4291973476414810757}
   - component: {fileID: 4929499263568799766}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Catcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6752643373617083213}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Catcher2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607916888437776596}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 2143324596401722988}
   - component: {fileID: 7735882400713672230}
   - component: {fileID: 9194431630902810099}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 58f58f6383003fd4a91e5e36e13a2618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -742,10 +742,10 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 24503
+    m_Bits: 57271
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2156208778050324981}
   - component: {fileID: 2665956417968441161}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: PigCatcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 3479732584367240596}
   - component: {fileID: 4060194461570471585}
   - component: {fileID: 7438889777311511310}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 4894716987360033190}
   - component: {fileID: 219722518491042954}
   - component: {fileID: 5236309284995099703}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 58f58f6383003fd4a91e5e36e13a2618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1069,7 +1069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6710010096916447631}
   - component: {fileID: 1097149933761067520}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Spline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6127177146244360339}
   - component: {fileID: 1174429836550584023}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: WierdWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
