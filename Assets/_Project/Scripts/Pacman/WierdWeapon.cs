@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WierdWeapon : MonoBehaviour, IWeapon
 {
-    [SerializeField] float _cooldown = 0.5f;
     [SerializeField] WierdProjectile _projectilePrefab;
     [SerializeField] Transform _shootPoint;
 
@@ -13,6 +12,9 @@ public class WierdWeapon : MonoBehaviour, IWeapon
 
     float _cooldownTimer = 0f;
 
+    public void Equip()
+    {
+    }
 
     public void Setup(PacmanStats stats)
     {

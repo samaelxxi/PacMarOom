@@ -13,6 +13,8 @@ public class Fsm
 
     State _currentState;
 
+    public State CurrentState => _currentState;
+
     public void Start(State startState)
     {
         TransitionTo(startState);
