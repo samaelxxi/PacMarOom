@@ -22,5 +22,5 @@ MonoBehaviour:
   <ForgetRange>k__BackingField: 30
   <AttackDelay>k__BackingField: 0.2
   <AttackRange>k__BackingField: 12
-  <AttackCooldown>k__BackingField: 5
+  <AttackCooldown>k__BackingField: 2
   <AttackDuration>k__BackingField: 1
