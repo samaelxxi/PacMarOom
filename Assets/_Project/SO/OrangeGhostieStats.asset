@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a8b29075f2664fac3cdadf2b54dd5, type: 3}
   m_Name: OrangeGhostieStats
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 180
-  <ChaseSpeed>k__BackingField: 3
+  <ChaseSpeed>k__BackingField: 6
   <Damage>k__BackingField: 1
   <Health>k__BackingField: 2
+  <InvulnerableTime>k__BackingField: 1
   <SightRange>k__BackingField: 22
   <ForgetRange>k__BackingField: 24
   <AttackDelay>k__BackingField: 0.2

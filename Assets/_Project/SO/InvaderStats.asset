@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2609db2103127244b4159c1b91f750b, type: 3}
   m_Name: InvaderStats
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 2
-  <ProjectileSpeed>k__BackingField: 5
+  <Health>k__BackingField: 1
+  <ProjectileSpeed>k__BackingField: 6
   <Damage>k__BackingField: 1
+  <InvulnerableTime>k__BackingField: 1
