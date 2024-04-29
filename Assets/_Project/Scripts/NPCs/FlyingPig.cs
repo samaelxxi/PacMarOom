@@ -36,6 +36,7 @@ public class FlyingPig : MonoBehaviour
         _runState = Fsm_RunState;
         _fsm.Start(_idleState);
         _mesh.DOLocalMoveY(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        UpdatePosOnSpline();
     }
 
     void Update()

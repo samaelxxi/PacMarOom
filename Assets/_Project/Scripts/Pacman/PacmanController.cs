@@ -70,7 +70,7 @@ public class PacmanController : MonoBehaviour
 
         Vector3 move = new(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         move = Vector3.ClampMagnitude(move, 1);
-        move = transform.TransformDirection(move) * _stats.Speed;
+        move = transform.TransformDirection(move);
         _controller.Move(_stats.Speed * Time.deltaTime * move);
 
 
