@@ -80,6 +80,11 @@ public class Pacman : MonoBehaviour
         _controller.Teleport(checkpoint);
     }
 
+    public void Teleport(Transform checkpoint)
+    {
+        _controller.Teleport(checkpoint);
+    }
+
     void Shoot()
     {
         _currentWeapon.TryShoot();

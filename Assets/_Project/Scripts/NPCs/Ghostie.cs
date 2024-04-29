@@ -21,6 +21,7 @@ public class Ghostie : NPC
     Fsm.State _attackState;
 
 
+    protected override int Health => _stats.Health;
     protected override float RotationSpeed => _stats.RotationSpeed;
     protected override float Speed => _stats.Speed;
     protected override float SightRange => _stats.SightRange;
@@ -30,6 +31,7 @@ public class Ghostie : NPC
     bool _isAware;
     bool _attackDamageDealt;
     bool _shouldPatrol;
+
 
 
     void Start()
@@ -82,7 +84,15 @@ public class Ghostie : NPC
     protected override void Die()
     {
         Game.Instance.AddScore(_killScore);
-        Destroy(gameObject);
+        base.Die();
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        _isAware = false;
+        _fsm.TransitionTo(_idleState);
+        _attackTween?.Kill();
     }
 
     void DamagePacman(Collider other)
@@ -171,6 +181,7 @@ public class Ghostie : NPC
 
     float _attackStateTimer;
     float _attackCooldownTimer;
+    Tween _attackTween;
     private void Fsm_AttackState(Fsm fsm, Fsm.Step step, Fsm.State state)
     {
         if (step == Fsm.Step.Enter)
@@ -180,7 +191,7 @@ public class Ghostie : NPC
             _attackArea.gameObject.SetActive(true);
             _targetPosition = Game.Instance.Pacman.transform.position;
             Vector3 attackPos = transform.position + TargetDirection.normalized * _stats.AttackRange;
-            transform.DOMove(attackPos, _stats.AttackDuration).SetEase(Ease.InOutCubic).SetDelay(_stats.AttackDelay);
+            _attackTween = transform.DOMove(attackPos, _stats.AttackDuration).SetEase(Ease.InOutCubic).SetDelay(_stats.AttackDelay);
         }
         else if (step == Fsm.Step.Update)
         {

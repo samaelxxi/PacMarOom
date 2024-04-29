@@ -45,6 +45,6 @@ public class Level : MonoBehaviour
 
     void Start()
     {
-        Game.Instance.RespawnPacman();
+        Game.Instance.InitPacmanOnLevel();
     }
 }

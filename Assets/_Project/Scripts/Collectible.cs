@@ -16,7 +16,7 @@ public class Collectible : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.right, 45 * Time.deltaTime);
+        transform.Rotate(Vector3.up, 45 * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CarterGames.Assets.AudioManager;
 using DesignPatterns.Singleton;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Game : Singleton<Game>
     public void SetHUD(HUD hud) => _hud = hud;
     public void SetLevel(Level level) => _level = level;
 
+
     public override void Awake()
     {
         base.Awake();
@@ -44,6 +46,7 @@ public class Game : Singleton<Game>
 
     public void Start()
     {
+        CollectResetables();
         _pacman.WierdWeapon.OnAmmoChanged += _hud.SetNewWieirdAmmo;
         _pacman.WierdWeapon.OnAmmoAdded += _hud.GetBonus;
         _level.OnScoreAdded += _hud.SetNewScore;
@@ -55,6 +58,21 @@ public class Game : Singleton<Game>
         _pacman.OnVulnerable += _hud.OnVulnerable;
     }
 
+    public void CollectResetables()
+    {
+        var startResetables = FindObjectsOfType<IResetable>(true);
+        foreach (var resetable in startResetables)
+        {
+            bool isActive = resetable.gameObject.activeSelf;
+            resetable.ActiveOnStart = isActive;
+            if (!isActive)
+            {
+                resetable.gameObject.SetActive(true);  // call awake and stuff
+                resetable.gameObject.SetActive(false);
+            }
+        }
+    }
+
     public void RespawnPacman()
     {
         if (_level == null)
@@ -64,6 +82,14 @@ public class Game : Singleton<Game>
         }
         OnPacmanRespawn?.Invoke();
         _pacman.Respawn(_level.PlayerSpawnPoint);
+        
+        var resetables = FindObjectsOfType<IResetable>(true);
+        foreach (var resetable in resetables)
+        {
+            resetable.gameObject.SetActive(true);
+            resetable.Reset();
+            resetable.gameObject.SetActive(resetable.ActiveOnStart);
+        }
     }
 
     public void AddScore(int score)
@@ -95,5 +121,16 @@ public class Game : Singleton<Game>
     public void SetNewCheckpoint(Transform checkpoint)
     {
         _level.SetNewCheckpoint(checkpoint);
+    }
+
+    public void DamageAndTeleportPacman()
+    {
+        _pacman.GetDamage(1);
+        _pacman.Teleport(_level.PlayerSpawnPoint);
+    }
+
+    public void InitPacmanOnLevel()
+    {
+        _pacman.Teleport(_level.PlayerSpawnPoint);
     }
 }
