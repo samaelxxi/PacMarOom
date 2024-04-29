@@ -90,7 +90,15 @@ public class Ghostie : NPC
 
     public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage);
+        if (_invulnerableTimer > 0)
+            return;
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
+        _health -= damage;
+        if (_health <= 0)
+            Die();
+        else
+            BecomeInvulnerable(InvulnerableTime);
+
         _isAware = true;
 
         if (!_isDead)
