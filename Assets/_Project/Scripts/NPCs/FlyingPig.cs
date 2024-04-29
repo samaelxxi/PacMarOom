@@ -77,7 +77,7 @@ public class FlyingPig : MonoBehaviour
                 if (_noPlayerTimer > 2)
                     fsm.TransitionTo(_idleState);
                 else
-                    UpdatePosOnSpline();
+                    Run();
             }
             else if (Vector3.Distance(transform.position, _pacman.position) > _sightRange)
             {
@@ -86,11 +86,16 @@ public class FlyingPig : MonoBehaviour
             }
             else
             {
-                _currentSpeed -= _speedReducePerSecond * Time.deltaTime;
-                _currentSpeed = Mathf.Max(_currentSpeed, _minSpeed);
-                UpdatePosOnSpline();
+                Run();
             }
         }
+    }
+
+    void Run()
+    {
+        _currentSpeed -= _speedReducePerSecond * Time.deltaTime;
+        _currentSpeed = Mathf.Max(_currentSpeed, _minSpeed);
+        UpdatePosOnSpline();
     }
 
     private void UpdatePosOnSpline()
