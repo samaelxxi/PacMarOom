@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minSpeed: 2
-  _maxSpeed: 5
-  _fullReplenishTime: 1
-  _speedReducePerSecond: 0.5
+  _maxSpeed: 11
+  _fullReplenishTime: 3
+  _speedReducePerSecond: 0.4
   _currentSpeed: 5
   _route: {fileID: 0}
-  _sightRange: 10
+  _sightRange: 13
   _mesh: {fileID: 7463322674067402727}
   _catchScore: 500
 --- !u!1 &8400698058384445439
