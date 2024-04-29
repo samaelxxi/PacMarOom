@@ -21,7 +21,7 @@ MonoBehaviour:
   <JumpDamage>k__BackingField: 1
   <WierdDamage>k__BackingField: 1
   <WierdShootCooldown>k__BackingField: 0.5
-  <WierdProjectileSpeed>k__BackingField: 20
+  <WierdProjectileSpeed>k__BackingField: 45
   <WierdAmmo>k__BackingField: 50
   <PigCatchCooldown>k__BackingField: 1
   <CatchDuration>k__BackingField: 0.5
