@@ -30,6 +30,7 @@ public class PacmanController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _camera = Camera.main;
+        Debug.Log(_camera);
     }
 
     void Update()

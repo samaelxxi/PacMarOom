@@ -26,7 +26,6 @@ public class Game : Singleton<Game>
     public override void Awake()
     {
         base.Awake();
-        Debug.Log("Game Awake");
         _enemySpawner = Resources.Load<EnemySpawner>("EnemySpawner");
 
         if (_audioManager == null)
@@ -46,7 +45,14 @@ public class Game : Singleton<Game>
     public void Start()
     {
         _pacman.WierdWeapon.OnAmmoChanged += _hud.SetNewWieirdAmmo;
-        _level.OnScoreChanged += _hud.SetNewScore;
+        _pacman.WierdWeapon.OnAmmoAdded += _hud.GetBonus;
+        _level.OnScoreAdded += _hud.SetNewScore;
+        _level.OnPigsAdded += _hud.SetNewPigs;
+        _level.OnPigsAdded += (i) => _hud.GetPig();
+        _pacman.OnHealthChanged += _hud.SetNewHealth;
+        _pacman.OnDamaged += _hud.GetDamaged;
+        _pacman.OnInvulnerable += _hud.OnInvulnerable;
+        _pacman.OnVulnerable += _hud.OnVulnerable;
     }
 
     public void RespawnPacman()
@@ -65,9 +71,20 @@ public class Game : Singleton<Game>
         _level.AddScore(score);
     }
 
+    public void GetCollectible(Collectible collectible)
+    {
+        _hud.GetBonus();
+        AddScore(collectible.Score);
+    }
+
     public void AddWierdAmmo(int ammo)
     {
         _pacman.WierdWeapon.AddAmmo(ammo);
+    }
+
+    public void CatchPig()
+    {
+        _level.CatchPig();
     }
 
     public void SpawnEnemy(EnemyType type, Transform spawnPoint)

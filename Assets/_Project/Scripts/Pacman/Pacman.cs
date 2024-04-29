@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,12 @@ public class Pacman : MonoBehaviour
     [SerializeField] PacmanStats _stats;
 
     public WierdWeapon WierdWeapon => _wierdWeapon;
-    
+
+    public event Action<int> OnHealthChanged;
+    public event Action OnDamaged;
+    public event Action OnInvulnerable;
+    public event Action OnVulnerable;
+
 
     PacmanController _controller;
     IWeapon _currentWeapon;
@@ -28,7 +34,7 @@ public class Pacman : MonoBehaviour
         _currentWeapon = _wierdWeapon;
         _wierdWeapon.Setup(_stats);
         _pigCatcher.Setup(_stats);
-        _health = _stats.Health;
+        SetHealth(_stats.Health);
 
         Game.Instance.SetPacman(this);
     }
@@ -43,10 +49,18 @@ public class Pacman : MonoBehaviour
         if (_invulnerableTimer > 0)
             return;
         Debug.Log("PacmanAuch");
-        _health -= damage;
+        SetHealth(_health - damage);
+        OnDamaged?.Invoke();
         _invulnerableTimer = _stats.InvulnerableTime;
+        OnInvulnerable?.Invoke();
         if (_health <= 0)
             Game.Instance.RespawnPacman();
+    }
+
+    void SetHealth(int health)
+    {
+        _health = health;
+        OnHealthChanged?.Invoke(_health);
     }
 
     void ChangeWeapon(int weapon)
@@ -60,11 +74,9 @@ public class Pacman : MonoBehaviour
         _currentWeapon.Equip();
     }
 
-
-
     public void Respawn(Transform checkpoint)
     {
-        _health = _stats.Health;
+        SetHealth(_stats.Health);
         _controller.Teleport(checkpoint);
     }
 
@@ -76,7 +88,12 @@ public class Pacman : MonoBehaviour
     void Update()
     {
         if (_invulnerableTimer > 0)
+        {
             _invulnerableTimer -= Time.deltaTime;
+            if (_invulnerableTimer <= 0)
+                OnVulnerable?.Invoke();
+        }
+        
         if (transform.position.y < -100)
             Game.Instance.RespawnPacman();
     }
