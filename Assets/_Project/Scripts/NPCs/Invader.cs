@@ -8,6 +8,7 @@ public class Invader : NPC
     [SerializeField] InvaderStats _stats;
     [SerializeField] InvaderProjectile _projectilePrefab;
     [SerializeField] Transform _shootPoint;
+    [SerializeField] int _killScore = 50;
 
     protected override float InvulnerableTime => _stats.InvulnerableTime;
 
@@ -28,7 +29,10 @@ public class Invader : NPC
 
         _health -= damage;
         if (_health <= 0)
+        {
             gameObject.SetActive(false);
+            Game.Instance.AddScore(_killScore);
+        }
         else
             BecomeInvulnerable(InvulnerableTime);
     }

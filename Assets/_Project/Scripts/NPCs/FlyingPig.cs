@@ -15,6 +15,7 @@ public class FlyingPig : MonoBehaviour
     [SerializeField] SplineContainer _route;
     [SerializeField] float _sightRange = 5f;
     [SerializeField] Transform _mesh;
+    [SerializeField] int _catchScore = 500;
 
     Transform _pacman;
     float _currentSplinePos = 0;
@@ -124,6 +125,7 @@ public class FlyingPig : MonoBehaviour
     public void BeCatched()
     {
         Destroy(gameObject);
+        Game.Instance.AddScore(_catchScore);
     }
 
     void OnDrawGizmos()
