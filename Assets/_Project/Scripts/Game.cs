@@ -9,6 +9,7 @@ public class Game : Singleton<Game>
 {
     public Pacman Pacman => _pacman;
     public AudioManager AudioManager => _audioManager;
+    public Level Level => _level;
 
     public event Action OnPacmanRespawn;
 
@@ -51,6 +52,12 @@ public class Game : Singleton<Game>
         }
         OnPacmanRespawn?.Invoke();
         _pacman.Respawn(_level.PlayerSpawnPoint);
+    }
+
+    public void AddScore(int score)
+    {
+        _level.AddScore(score);
+        _hud.SetNewScore(_level.Score);
     }
 
     public void SpawnEnemy(EnemyType type, Transform spawnPoint)
