@@ -12,6 +12,7 @@ public class Ghostie : NPC
     [SerializeField] BoxCollider _patrolArea;
     [SerializeField] BoxCollider _attackArea;
     [SerializeField] TriggerObserver _attackTrigger;
+    [SerializeField] int _killScore = 100;
 
 
     Fsm.State _idleState;
@@ -76,6 +77,12 @@ public class Ghostie : NPC
     {
         base.TakeDamage(damage);
         _isAware = true;
+    }
+
+    protected override void Die()
+    {
+        Game.Instance.AddScore(_killScore);
+        Destroy(gameObject);
     }
 
     void DamagePacman(Collider other)

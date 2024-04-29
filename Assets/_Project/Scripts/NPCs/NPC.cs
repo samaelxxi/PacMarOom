@@ -44,9 +44,14 @@ public class NPC : MonoBehaviour
         Debug.Log("Auch");
         _health -= damage;
         if (_health <= 0)
-            Destroy(gameObject);
+            Die();
         else
             BecomeInvulnerable(InvulnerableTime);
+    }
+
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
     }
 
     protected void BecomeInvulnerable(float duration)

@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 3
   <InvulnerableTime>k__BackingField: 2
-  <Speed>k__BackingField: 2.5
+  <Speed>k__BackingField: 7
   <MouseSensitivity>k__BackingField: 2
   <Gravity>k__BackingField: 40
   <JumpForce>k__BackingField: 5
   <JumpDamage>k__BackingField: 1
   <WierdDamage>k__BackingField: 1
   <WierdShootCooldown>k__BackingField: 0.5
-  <WierdProjectileSpeed>k__BackingField: 30
+  <WierdProjectileSpeed>k__BackingField: 20
+  <WierdAmmo>k__BackingField: 50
+  <PigCatchCooldown>k__BackingField: 1
+  <CatchDuration>k__BackingField: 0.5
