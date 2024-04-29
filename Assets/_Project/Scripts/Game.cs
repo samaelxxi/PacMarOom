@@ -57,6 +57,7 @@ public class Game : Singleton<Game>
         _level.OnScoreAdded += _hud.SetNewScore;
         _level.OnPigsAdded += _hud.SetNewPigs;
         _level.OnPigsAdded += (i) => _hud.GetPig();
+        _level.OnNewWorld += _hud.SetNewWorld;
         _pacman.OnHealthChanged += _hud.SetNewHealth;
         _pacman.OnDamaged += _hud.GetDamaged;
         _pacman.OnInvulnerable += _hud.OnInvulnerable;

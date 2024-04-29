@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 0
   scanlinesWeight:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.64
   noiseWeight:
     m_OverrideState: 1
     m_Value: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a1bd58dd7548198609eabd8ae2bb7d, type: 3}
   m_Name: Pixelation
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   widthPixelation:
     m_OverrideState: 1
     m_Value: 512
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea62842ddb6960488930897ba9ce398, type: 3}
   m_Name: Dithering
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   patternIndex:
     m_OverrideState: 1
     m_Value: 3

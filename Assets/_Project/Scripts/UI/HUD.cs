@@ -65,6 +65,11 @@ public class HUD : MonoBehaviour
         _ammoText.text = ammo.ToString();
     }
 
+    public void SetNewWorld(string world)
+    {
+        _worldText.text = world;
+    }
+
     public void SetNewPigs(int pigs)
     {
         _pigsText.text = pigs.ToString();

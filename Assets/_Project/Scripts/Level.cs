@@ -12,12 +12,15 @@ public class Level : MonoBehaviour
 
     public event Action<int> OnScoreAdded;
     public event Action<int> OnPigsAdded;
+    public event Action<string> OnNewWorld;
 
     public int Score => _score;
     public string WorldName => _worldName;
 
     int _score = 0;
     int _pigs = 0;
+
+    int _currentCheckpoint = 0;
 
     void Awake()
     {
@@ -27,6 +30,13 @@ public class Level : MonoBehaviour
     public void SetNewCheckpoint(Transform checkpoint)
     {
         _playerSpawnPoint.position = checkpoint.position;
+        _currentCheckpoint++;
+        string worldName = $"{_currentCheckpoint/5 + 1}-{_currentCheckpoint%5}";
+        if (worldName != _worldName)
+        {
+            _worldName = worldName;
+            OnNewWorld?.Invoke(_worldName);
+        }
     }
 
 
