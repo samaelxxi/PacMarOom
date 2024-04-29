@@ -18,4 +18,8 @@ public class PacmanStats : ScriptableObject
     SerializeField]         public int WierdDamage { get; private set; } = 1;
     [field: SerializeField] public float WierdShootCooldown { get; private set; } = 0.5f;
     [field: SerializeField] public float WierdProjectileSpeed { get; private set; } = 10;
+
+    [field: Header("Pig Catcher Weapon"),
+    SerializeField]         public float PigCatchCooldown { get; private set; } = 1f;
+    [field: SerializeField] public float CatchDuration { get; private set; } = 0.5f;
 }

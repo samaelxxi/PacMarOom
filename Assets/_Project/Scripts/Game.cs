@@ -1,20 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CarterGames.Assets.AudioManager;
 using DesignPatterns.Singleton;
 using UnityEngine;
 
 public class Game : Singleton<Game>
 {
     public Pacman Pacman => _pacman;
+    public AudioManager AudioManager => _audioManager;
 
     public event Action OnPacmanRespawn;
 
     Pacman _pacman;
     HUD _hud;
     Level _level;
-
     EnemySpawner _enemySpawner;
+    AudioManager _audioManager;
 
     public void SetPacman(Pacman pacman) => _pacman = pacman;
     public void SetHUD(HUD hud) => _hud = hud;
@@ -23,12 +25,21 @@ public class Game : Singleton<Game>
     public override void Awake()
     {
         base.Awake();
+        Debug.Log("Game Awake");
         _enemySpawner = Resources.Load<EnemySpawner>("EnemySpawner");
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        if (_audioManager == null)
+        {
+            Debug.Log("Loading audio manager");
+            _audioManager = FindAnyObjectByType<AudioManager>();
+            if (_audioManager == null)
+            {
+                _audioManager = Resources.Load<AudioManager>("AudioManager");
+                _audioManager = Instantiate(_audioManager);
+            }
+            // AudioPool.Initialise(_audioManager.AudioManagerFile.soundPrefab, 10);
+            DontDestroyOnLoad(_audioManager);
+        }
     }
 
     public void RespawnPacman()
@@ -50,11 +61,5 @@ public class Game : Singleton<Game>
     public void SetNewCheckpoint(Transform checkpoint)
     {
         _level.SetNewCheckpoint(checkpoint);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

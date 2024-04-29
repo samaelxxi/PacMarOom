@@ -7,6 +7,7 @@ using UnityEngine;
 public class PacmanController : MonoBehaviour
 {
     public event Action OnShootClicked;
+    public event Action<int> OnChangeWeaponClicked;
 
     CharacterController _controller;
     Vector3 _velocity;
@@ -38,6 +39,10 @@ public class PacmanController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
             OnShootClicked?.Invoke();
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            OnChangeWeaponClicked?.Invoke(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) 
+            OnChangeWeaponClicked?.Invoke(1);
     }
 
     public void Teleport(Transform checkpoint)
@@ -75,6 +80,7 @@ public class PacmanController : MonoBehaviour
             {
                 _groundedTimer = 0;
                 _verticalVelocity += Mathf.Sqrt(_stats.JumpForce * 2 * _stats.Gravity);
+                Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
             }
         }
 
@@ -126,6 +132,7 @@ public class PacmanController : MonoBehaviour
                     // Debug.Log("Pacman hit enemy from above and it's damageable");
                     damageable.TakeDamage(_stats.JumpDamage);
                     _verticalVelocity = Mathf.Sqrt(_stats.JumpForce * _stats.Gravity);
+                    Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
                 }
             }
         }
