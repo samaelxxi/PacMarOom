@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: PinkGhostieStats
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 2
-  <RotationSpeed>k__BackingField: 120
+  <RotationSpeed>k__BackingField: 60
   <ChaseSpeed>k__BackingField: 3
-  <Damage>k__BackingField: 1
-  <Health>k__BackingField: 2
-  <SightRange>k__BackingField: 24
-  <ForgetRange>k__BackingField: 30
-  <AttackDelay>k__BackingField: 0.2
-  <AttackRange>k__BackingField: 12
+  <Damage>k__BackingField: 3
+  <Health>k__BackingField: 3
+  <InvulnerableTime>k__BackingField: 1
+  <SightRange>k__BackingField: 5
+  <ForgetRange>k__BackingField: 6
+  <AttackDelay>k__BackingField: 0.8
+  <AttackRange>k__BackingField: 5
   <AttackCooldown>k__BackingField: 5
   <AttackDuration>k__BackingField: 1

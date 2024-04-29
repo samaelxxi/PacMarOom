@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a8b29075f2664fac3cdadf2b54dd5, type: 3}
   m_Name: RedGhostieStats
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 180
-  <ChaseSpeed>k__BackingField: 6
+  <ChaseSpeed>k__BackingField: 12
   <Damage>k__BackingField: 1
   <Health>k__BackingField: 2
-  <SightRange>k__BackingField: 9
-  <ForgetRange>k__BackingField: 14
+  <InvulnerableTime>k__BackingField: 1
+  <SightRange>k__BackingField: 24
+  <ForgetRange>k__BackingField: 30
   <AttackDelay>k__BackingField: 0.2
-  <AttackRange>k__BackingField: 4
-  <AttackCooldown>k__BackingField: 1
+  <AttackRange>k__BackingField: 12
+  <AttackCooldown>k__BackingField: 5
   <AttackDuration>k__BackingField: 1
