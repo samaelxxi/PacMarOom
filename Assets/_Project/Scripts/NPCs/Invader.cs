@@ -28,20 +28,20 @@ public class Invader : NPC
         if (_invulnerableTimer > 0)
             return;
 
-        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
 
         _health -= damage;
         if (_health <= 0)
         {
             gameObject.SetActive(false);
             Game.Instance.AddScore(_killScore);
-            Game.Instance.AudioManager.Play("invaderDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+            Game.Instance.AudioManager.Play("invaderDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
 
         }
         else
         {
             BecomeInvulnerable(InvulnerableTime);
-            Game.Instance.AudioManager.Play("invaderDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+            Game.Instance.AudioManager.Play("invaderDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         }
     }
 
@@ -82,13 +82,16 @@ public class Invader : NPC
         var projectile = Instantiate(_projectilePrefab, _shootPoint.position, transform.rotation, transform.parent);
         _projectiles.Add(projectile.gameObject);
         projectile.Setup(transform.forward, _stats.ProjectileSpeed, _stats.Damage);
-        Hashtable hash = new Hashtable
-        {
-            { "maxDistance", 30 },
-            { "pitch", UnityEngine.Random.Range( 0.9f, 1.1f )},
-            { "volume", 0.5f}
-        };
-        Game.Instance.AudioManager.Play("shoot", hash);
+        // Hashtable hash = new Hashtable
+        // {
+        //     { "maxdistance", 30.0f },
+        //     { "pitch", UnityEngine.Random.Range( 0.9f, 1.1f )},
+        //     { "volume", 0.3f},
+        //     { "spatialblend", 1.0f },
+        //     { "rolloffmode", AudioRolloffMode.Linear},
+        //     { "position", transform.position}
+        // };
+        // Game.Instance.AudioManager.Play("shoot", hash);
     }
 
     public override void Reset()

@@ -16,6 +16,7 @@ public class Ghostie : NPC
 
     [SerializeField] GameObject _aliveMesh;
     [SerializeField] GameObject _deadMesh;
+    [SerializeField] CapsuleCollider _collider;
 
 
     Fsm.State _idleState;
@@ -56,6 +57,7 @@ public class Ghostie : NPC
             gameObject.transform.parent.TryGetComponent(out BoxCollider boxCollider))
             _patrolArea = boxCollider;
         _shouldPatrol = _patrolArea != null;
+        _collider = GetComponent<CapsuleCollider>();
     }
 
     void Start()
@@ -92,9 +94,9 @@ public class Ghostie : NPC
         _isAware = true;
 
         if (!_isDead)
-            Game.Instance.AudioManager.Play("ghostDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+            Game.Instance.AudioManager.Play("ghostDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         else
-            Game.Instance.AudioManager.Play("ghostDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+            Game.Instance.AudioManager.Play("ghostDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
     }
 
 
@@ -245,6 +247,7 @@ public class Ghostie : NPC
             _deadMesh.transform.localPosition = Vector3.zero;
             _deadTween = _deadMesh.transform.DOLocalMoveY(10, 5).SetEase(Ease.InCubic).OnComplete(() => gameObject.SetActive(false));
             _isRevived = false;
+            _collider.enabled = false;
         }
         else if (step == Fsm.Step.Update)
         {
@@ -258,6 +261,7 @@ public class Ghostie : NPC
             _deadMesh.SetActive(false);
             _aliveMesh.SetActive(true);
             _isRevived = false;
+            _collider.enabled = true;
         }
     }
 

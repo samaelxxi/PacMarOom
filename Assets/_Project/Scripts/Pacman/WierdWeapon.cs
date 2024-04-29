@@ -19,7 +19,7 @@ public class WierdWeapon : MonoBehaviour, IWeapon
     int _ammo;
 
 
-float _cooldownTimer = 0f;
+    float _cooldownTimer = 0f;
 
     public void Equip()
     {
@@ -48,7 +48,7 @@ float _cooldownTimer = 0f;
 
         WierdProjectile projectile = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
         projectile.Setup(_shootPoint.forward, _stats.WierdProjectileSpeed, _stats.WierdDamage);
-        Game.Instance.AudioManager.Play("playerShoot", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+        Game.Instance.AudioManager.Play("playerShoot", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         AddAmmo(-1);
     }
 

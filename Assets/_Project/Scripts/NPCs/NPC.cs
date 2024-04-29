@@ -62,7 +62,7 @@ public class NPC : IResetable, IDeadable
     {
         if (_invulnerableTimer > 0)
             return;
-        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: Random.Range(0.9f, 1.1f));
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: Random.Range(0.9f, 1.1f), volume: 0.7f);
         _health -= damage;
         if (_health <= 0)
             Die();

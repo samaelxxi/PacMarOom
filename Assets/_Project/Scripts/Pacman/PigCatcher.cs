@@ -59,6 +59,7 @@ public class PigCatcher : MonoBehaviour, IWeapon
         _catchZone.gameObject.SetActive(true);
         _splineAnimate.Duration = _stats.CatchDuration;
         _splineAnimate.Restart(autoplay: true);
+        Game.Instance.AudioManager.PlayRange(Sounds.Net, pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         this.InSeconds(_stats.CatchDuration, () => _catchZone.gameObject.SetActive(false));
         this.InSeconds(_stats.CatchDuration, () => _splineAnimate.Restart(autoplay: false));
     }

@@ -12,7 +12,7 @@ public class AmmoPickup : MonoBehaviour
         {
             Game.Instance.AddWierdAmmo(_ammo);
             gameObject.SetActive(false);
-            Game.Instance.AudioManager.Play("ammo", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+            Game.Instance.AudioManager.Play("ammo", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         }
     }
 

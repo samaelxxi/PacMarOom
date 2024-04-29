@@ -1915,7 +1915,7 @@ namespace CarterGames.Assets.AudioManager
             
             if (args.ContainsKey("loop"))
                 source.loop = (bool) args["loop"];
-            
+
             if (args.ContainsKey("priority"))
                 source.priority = (int) args["priority"];
             

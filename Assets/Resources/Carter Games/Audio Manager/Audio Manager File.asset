@@ -52,6 +52,16 @@ MonoBehaviour:
     value: {fileID: 8300000, guid: 44ff4b87e547a6343a65c6bfd5e5f61b, type: 3}
   - key: jump
     value: {fileID: 8300000, guid: 685039bd2d5e2a14a9cdcf6f30a30c91, type: 3}
+  - key: net1
+    value: {fileID: 8300000, guid: eff1d233f1fa57e4690f12dd66739fa9, type: 3}
+  - key: net2
+    value: {fileID: 8300000, guid: 18617cdcbdaeaee4d95e7f714795c1ec, type: 3}
+  - key: pig1
+    value: {fileID: 8300000, guid: 753ae1fe3bc5fa94992dc1924656edff, type: 3}
+  - key: pig2
+    value: {fileID: 8300000, guid: f4093784f35d251429ddeecf613f83a3, type: 3}
+  - key: pig3
+    value: {fileID: 8300000, guid: 7729fb5013bbf87409722b131c907407, type: 3}
   - key: playerShoot
     value: {fileID: 8300000, guid: 13a479aa08937a74088e718eed0676f0, type: 3}
   - key: shit
