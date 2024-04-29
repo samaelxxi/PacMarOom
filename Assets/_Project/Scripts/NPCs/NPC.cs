@@ -27,7 +27,7 @@ public class NPC : IResetable, IDeadable
     MeshRenderer _meshRenderer;
 
 
-    bool _isDead = false;
+    protected bool _isDead = false;
     bool _isSpawned = false;
     public bool IsSpawned => _isSpawned;
 
@@ -55,7 +55,6 @@ public class NPC : IResetable, IDeadable
         transform.rotation = _startRotation;
         _health = Health;
         _isDead = false;
-        Debug.Log("Resetting NPC");
         gameObject.SetActive(true);
     }
 
@@ -63,7 +62,7 @@ public class NPC : IResetable, IDeadable
     {
         if (_invulnerableTimer > 0)
             return;
-        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: Random.Range(0.9f, 1.1f));
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: Random.Range(0.9f, 1.1f), volume: 0.7f);
         _health -= damage;
         if (_health <= 0)
             Die();

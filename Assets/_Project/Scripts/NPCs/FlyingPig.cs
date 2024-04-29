@@ -131,6 +131,7 @@ public class FlyingPig : MonoBehaviour
     public void BeCatched()
     {
         Destroy(gameObject);
+        Game.Instance.AudioManager.PlayRange(Sounds.Pig, pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         Game.Instance.AddScore(_catchScore);
     }
 

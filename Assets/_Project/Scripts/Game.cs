@@ -39,7 +39,9 @@ public class Game : Singleton<Game>
                 _audioManager = Resources.Load<AudioManager>("AudioManager");
                 _audioManager = Instantiate(_audioManager);
             }
-            // AudioPool.Initialise(_audioManager.AudioManagerFile.soundPrefab, 10);
+            Debug.Log(_audioManager.AudioManagerFile);
+            Debug.Log(_audioManager.AudioManagerFile.soundPrefab);
+            AudioPool.Initialise(_audioManager.AudioManagerFile.soundPrefab, 10);
             DontDestroyOnLoad(_audioManager);
         }
     }
@@ -47,6 +49,9 @@ public class Game : Singleton<Game>
     public void Start()
     {
         CollectResetables();
+        Debug.Log(_pacman);
+        Debug.Log(_pacman.WierdWeapon);
+        Debug.Log(_hud);
         _pacman.WierdWeapon.OnAmmoChanged += _hud.SetNewWieirdAmmo;
         _pacman.WierdWeapon.OnAmmoAdded += _hud.GetBonus;
         _level.OnScoreAdded += _hud.SetNewScore;
@@ -56,6 +61,7 @@ public class Game : Singleton<Game>
         _pacman.OnDamaged += _hud.GetDamaged;
         _pacman.OnInvulnerable += _hud.OnInvulnerable;
         _pacman.OnVulnerable += _hud.OnVulnerable;
+        Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
     }
 
     public void CollectResetables()
@@ -86,6 +92,7 @@ public class Game : Singleton<Game>
         var resetables = FindObjectsOfType<IResetable>(true);
         foreach (var resetable in resetables)
         {
+            Debug.Log($"Resetting {resetable.gameObject.name}");
             resetable.gameObject.SetActive(true);
             resetable.Reset();
             resetable.gameObject.SetActive(resetable.ActiveOnStart);

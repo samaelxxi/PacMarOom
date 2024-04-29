@@ -81,7 +81,7 @@ public class PacmanController : MonoBehaviour
             {
                 _groundedTimer = 0;
                 _verticalVelocity += Mathf.Sqrt(_stats.JumpForce * 2 * _stats.Gravity);
-                Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+                Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
             }
         }
 
@@ -133,7 +133,7 @@ public class PacmanController : MonoBehaviour
                     // Debug.Log("Pacman hit enemy from above and it's damageable");
                     damageable.TakeDamage(_stats.JumpDamage);
                     _verticalVelocity = Mathf.Sqrt(_stats.JumpForce * _stats.Gravity);
-                    Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+                    Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
                 }
             }
         }

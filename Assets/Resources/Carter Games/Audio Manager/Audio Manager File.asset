@@ -26,11 +26,45 @@ MonoBehaviour:
     value: {fileID: 8300000, guid: fb1948232ead642428d8311d98f2a5e0, type: 3}
   - key: PACMAROOM
     value: {fileID: 8300000, guid: 149270028e4d2bb46a45f888b220b23e, type: 3}
+  - key: ammo
+    value: {fileID: 8300000, guid: bb412e9140a45ed4183cd9dbffdfca32, type: 3}
+  - key: auch1
+    value: {fileID: 8300000, guid: 791a1f53c5223c645ae475d7d3708f58, type: 3}
+  - key: auch2
+    value: {fileID: 8300000, guid: 68f2c99b2b69cf3438c73b2f1096d768, type: 3}
+  - key: auch3
+    value: {fileID: 8300000, guid: 3ce6ef94cf990a147bd0b48c60ffbb1b, type: 3}
   - key: click
     value: {fileID: 8300000, guid: 1af39204281f36f4fa96a12c7663a324, type: 3}
+  - key: collectible
+    value: {fileID: 8300000, guid: a7f73a8a13038c14ba5c26b7155c9c0c, type: 3}
+  - key: ghostDamaged
+    value: {fileID: 8300000, guid: 24f5568abf1092d439a2d7f712aac934, type: 3}
+  - key: ghostDied
+    value: {fileID: 8300000, guid: 7508ecbb7471b0f4dae4570ca3f8f299, type: 3}
   - key: hurt
     value: {fileID: 8300000, guid: b28a5d2f7568be440b5c9556a5d950fe, type: 3}
   - key: hurt2
     value: {fileID: 8300000, guid: c9fc258f51f43e94ab63529f7525686e, type: 3}
+  - key: invaderDamaged
+    value: {fileID: 8300000, guid: a5bdf9a8301ba7d49bcf08372d301669, type: 3}
+  - key: invaderDied
+    value: {fileID: 8300000, guid: 44ff4b87e547a6343a65c6bfd5e5f61b, type: 3}
   - key: jump
     value: {fileID: 8300000, guid: 685039bd2d5e2a14a9cdcf6f30a30c91, type: 3}
+  - key: net1
+    value: {fileID: 8300000, guid: eff1d233f1fa57e4690f12dd66739fa9, type: 3}
+  - key: net2
+    value: {fileID: 8300000, guid: 18617cdcbdaeaee4d95e7f714795c1ec, type: 3}
+  - key: pig1
+    value: {fileID: 8300000, guid: 753ae1fe3bc5fa94992dc1924656edff, type: 3}
+  - key: pig2
+    value: {fileID: 8300000, guid: f4093784f35d251429ddeecf613f83a3, type: 3}
+  - key: pig3
+    value: {fileID: 8300000, guid: 7729fb5013bbf87409722b131c907407, type: 3}
+  - key: playerShoot
+    value: {fileID: 8300000, guid: 13a479aa08937a74088e718eed0676f0, type: 3}
+  - key: shit
+    value: {fileID: 8300000, guid: 301704c49edd52a4e934ecb83ae96b08, type: 3}
+  - key: shoot
+    value: {fileID: 8300000, guid: 4a7978e6653c41c4eb5d7c0707bb4ae2, type: 3}

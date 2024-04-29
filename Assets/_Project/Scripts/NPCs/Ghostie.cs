@@ -14,11 +14,16 @@ public class Ghostie : NPC
     [SerializeField] TriggerObserver _attackTrigger;
     [SerializeField] int _killScore = 100;
 
+    [SerializeField] GameObject _aliveMesh;
+    [SerializeField] GameObject _deadMesh;
+    [SerializeField] CapsuleCollider _collider;
+
 
     Fsm.State _idleState;
     Fsm.State _patrolState;
     Fsm.State _chaseState;
     Fsm.State _attackState;
+    Fsm.State _deadState;
 
 
     protected override int Health => _stats.Health;
@@ -31,21 +36,20 @@ public class Ghostie : NPC
     bool _isAware;
     bool _attackDamageDealt;
     bool _shouldPatrol;
+    bool _isRevived;
 
 
 
-    void Start()
+    protected override void Awake()
     {
-        _health = _stats.Health;
+        base.Awake();
 
         _idleState = Fsm_IdleState;
         _patrolState = Fsm_PatrolState;
         _chaseState = Fsm_ChaseState;
         _attackState = Fsm_AttackState;
-
+        _deadState = Fsm_DeadState;
         _fsm = new Fsm();
-        _fsm.Start(_idleState);
-
         _attackTrigger.SetTestPredicate((Collider other) => other.gameObject == Game.Instance.Pacman.gameObject);
         _attackTrigger.OnTriggerEnterEvent += DamagePacman;
 
@@ -53,6 +57,14 @@ public class Ghostie : NPC
             gameObject.transform.parent.TryGetComponent(out BoxCollider boxCollider))
             _patrolArea = boxCollider;
         _shouldPatrol = _patrolArea != null;
+        _collider = GetComponent<CapsuleCollider>();
+    }
+
+    void Start()
+    {
+        // Debug.Log($"{gameObject.name} Start");
+        _health = _stats.Health;
+        _fsm.Start(_idleState);
     }
 
     protected override void Update()
@@ -62,6 +74,7 @@ public class Ghostie : NPC
 
         if (_isAware)
         {
+            // Debug.Log($"{gameObject.name} Aware");
             _awareTimer += Time.deltaTime;
             if (IsPlayerTooFar() && _awareTimer > 5)
                 _isAware = false;
@@ -79,20 +92,30 @@ public class Ghostie : NPC
     {
         base.TakeDamage(damage);
         _isAware = true;
+
+        if (!_isDead)
+            Game.Instance.AudioManager.Play("ghostDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
+        else
+            Game.Instance.AudioManager.Play("ghostDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
     }
+
 
     protected override void Die()
     {
         Game.Instance.AddScore(_killScore);
-        base.Die();
+        _isDead = true;
+        _fsm.TransitionTo(_deadState);
     }
 
     public override void Reset()
     {
-        base.Reset();
         _isAware = false;
-        // _fsm.TransitionTo(_idleState);
+        // Debug.Log($"Resetting NPC {gameObject.name}");
+        if (_isDead)
+            _isRevived = true;
         _attackTween?.Kill();
+        _attackArea.gameObject.SetActive(false);
+        base.Reset();
     }
 
     void DamagePacman(Collider other)
@@ -131,7 +154,9 @@ public class Ghostie : NPC
         }
         else if (step == Fsm.Step.Update)
         {
-            if (_isAware)
+            if (_isRevived)
+                fsm.TransitionTo(_idleState);
+            else if (_isAware)
                 fsm.TransitionTo(_chaseState);
             else if (Vector3.Distance(transform.position, _targetPosition) < 0.5f)
                 fsm.TransitionTo(_idleState);
@@ -158,7 +183,7 @@ public class Ghostie : NPC
     {
         if (step == Fsm.Step.Update)
         {
-            if (!_isAware)
+            if (!_isAware || _isRevived)
             {
                 fsm.TransitionTo(_idleState);
                 return;
@@ -195,6 +220,9 @@ public class Ghostie : NPC
         }
         else if (step == Fsm.Step.Update)
         {
+            if (_isRevived)
+                fsm.TransitionTo(_idleState);
+
             _attackStateTimer += Time.deltaTime;
             if (_attackStateTimer > _stats.AttackDuration + _stats.AttackDelay)
                 fsm.TransitionTo(_chaseState);
@@ -207,6 +235,35 @@ public class Ghostie : NPC
     }
 
 
+    Tween _deadTween;
+    private void Fsm_DeadState(Fsm fsm, Fsm.Step step, Fsm.State state)
+    {
+
+        if (step == Fsm.Step.Enter)
+        {
+            // Debug.Log($"{gameObject.name} Dead");
+            _aliveMesh.SetActive(false);
+            _deadMesh.SetActive(true);
+            _deadMesh.transform.localPosition = Vector3.zero;
+            _deadTween = _deadMesh.transform.DOLocalMoveY(10, 5).SetEase(Ease.InCubic).OnComplete(() => gameObject.SetActive(false));
+            _isRevived = false;
+            _collider.enabled = false;
+        }
+        else if (step == Fsm.Step.Update)
+        {
+            if (_isRevived)
+                fsm.TransitionTo(_idleState);
+        }
+        else if (step == Fsm.Step.Exit)
+        {
+            // Debug.Log($"{gameObject.name} Revive");
+            _deadTween.Kill();
+            _deadMesh.SetActive(false);
+            _aliveMesh.SetActive(true);
+            _isRevived = false;
+            _collider.enabled = true;
+        }
+    }
 
     void OnDrawGizmosSelected()
     {
