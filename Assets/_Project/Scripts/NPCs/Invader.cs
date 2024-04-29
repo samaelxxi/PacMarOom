@@ -20,6 +20,7 @@ public class Invader : NPC
     void Start()
     {
         _health = _stats.Health;
+        _shootTimer = 0;
     }
 
     public override void TakeDamage(int damage)
@@ -34,9 +35,20 @@ public class Invader : NPC
         {
             gameObject.SetActive(false);
             Game.Instance.AddScore(_killScore);
+            Game.Instance.AudioManager.Play("invaderDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+
         }
         else
+        {
             BecomeInvulnerable(InvulnerableTime);
+            Game.Instance.AudioManager.Play("invaderDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+        }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+
     }
 
     public void Move(Vector3 displacement)
@@ -46,9 +58,23 @@ public class Invader : NPC
 
     public void PrepareShoot()
     {
-        this.InSeconds(UnityEngine.Random.Range(_shootTime - _shootTime*0.2f, _shootTime + _shootTime*0.2f), () => Shoot());
+        _shootTimer = UnityEngine.Random.Range(_shootTime - _shootTime*0.2f, _shootTime + _shootTime*0.2f);
     }
 
+    float _shootTimer;
+    protected override void Update()
+    {
+        base.Update();
+        if (_shootTimer <= 0)
+            PrepareShoot();
+
+        if (_shootTimer > 0)
+        {
+            _shootTimer -= Time.deltaTime;
+            if (_shootTimer <= 0)
+                Shoot();
+        }
+    }
 
     List<GameObject> _projectiles = new();
     void Shoot()
@@ -56,7 +82,13 @@ public class Invader : NPC
         var projectile = Instantiate(_projectilePrefab, _shootPoint.position, transform.rotation, transform.parent);
         _projectiles.Add(projectile.gameObject);
         projectile.Setup(transform.forward, _stats.ProjectileSpeed, _stats.Damage);
-        PrepareShoot();
+        Hashtable hash = new Hashtable
+        {
+            { "maxDistance", 30 },
+            { "pitch", UnityEngine.Random.Range( 0.9f, 1.1f )},
+            { "volume", 0.5f}
+        };
+        Game.Instance.AudioManager.Play("shoot", hash);
     }
 
     public override void Reset()

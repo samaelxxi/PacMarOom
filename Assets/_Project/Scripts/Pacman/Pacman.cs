@@ -51,6 +51,7 @@ public class Pacman : MonoBehaviour
         Debug.Log("PacmanAuch");
         SetHealth(_health - damage);
         OnDamaged?.Invoke();
+        Game.Instance.AudioManager.PlayRange(Sounds.PlayerHurts, pitch: UnityEngine.Random.Range(0.9f, 1.1f));
         _invulnerableTimer = _stats.InvulnerableTime;
         OnInvulnerable?.Invoke();
         if (_health <= 0)

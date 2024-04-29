@@ -48,7 +48,7 @@ MonoBehaviour:
   hasScannedOnce: 0
   shouldShowMixers: 0
   shouldShowDir: 0
-  shouldShowClips: 0
+  shouldShowClips: 1
   audioManagerFile: {fileID: 11400000, guid: c98c8e1d8e6d4594faae1005f391be6a, type: 2}
 --- !u!82 &1629432242949989859
 AudioSource:

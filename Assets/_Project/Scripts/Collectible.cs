@@ -15,6 +15,7 @@ public class Collectible : MonoBehaviour
         {
             Game.Instance.GetCollectible(this);
             Destroy(gameObject);
+            Game.Instance.AudioManager.Play("collectible", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
         }
     }
 }

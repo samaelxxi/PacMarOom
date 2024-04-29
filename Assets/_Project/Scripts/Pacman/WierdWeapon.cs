@@ -48,6 +48,7 @@ float _cooldownTimer = 0f;
 
         WierdProjectile projectile = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
         projectile.Setup(_shootPoint.forward, _stats.WierdProjectileSpeed, _stats.WierdDamage);
+        Game.Instance.AudioManager.Play("playerShoot", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
         AddAmmo(-1);
     }
 

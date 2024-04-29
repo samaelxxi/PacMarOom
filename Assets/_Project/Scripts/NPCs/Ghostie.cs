@@ -90,6 +90,11 @@ public class Ghostie : NPC
     {
         base.TakeDamage(damage);
         _isAware = true;
+
+        if (!_isDead)
+            Game.Instance.AudioManager.Play("ghostDamaged", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+        else
+            Game.Instance.AudioManager.Play("ghostDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f));
     }
 
 
