@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : IResetable
+public class NPC : IResetable, IDeadable
 {
     protected Fsm _fsm;
 
@@ -27,8 +27,12 @@ public class NPC : IResetable
     MeshRenderer _meshRenderer;
 
 
+    bool _isDead = false;
     bool _isSpawned = false;
     public bool IsSpawned => _isSpawned;
+
+    public bool IsDead => _isDead;
+
     Vector3 _startPosition;
     Quaternion _startRotation;
 
@@ -50,6 +54,7 @@ public class NPC : IResetable
         transform.position = _startPosition;
         transform.rotation = _startRotation;
         _health = Health;
+        _isDead = false;
         Debug.Log("Resetting NPC");
         gameObject.SetActive(true);
     }
@@ -69,6 +74,7 @@ public class NPC : IResetable
     protected virtual void Die()
     {
         gameObject.SetActive(false);
+        _isDead = true;
     }
 
     protected void BecomeInvulnerable(float duration)

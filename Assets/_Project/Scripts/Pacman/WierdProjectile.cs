@@ -23,7 +23,7 @@ public class WierdProjectile : MonoBehaviour
 
     void Update()
     {
-        _velocity += Physics.gravity * Time.deltaTime;
+        // _velocity += Physics.gravity * Time.deltaTime;
         transform.position += _velocity * Time.deltaTime;
     }
 

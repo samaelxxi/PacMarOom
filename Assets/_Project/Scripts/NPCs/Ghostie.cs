@@ -91,7 +91,7 @@ public class Ghostie : NPC
     {
         base.Reset();
         _isAware = false;
-        _fsm.TransitionTo(_idleState);
+        // _fsm.TransitionTo(_idleState);
         _attackTween?.Kill();
     }
 

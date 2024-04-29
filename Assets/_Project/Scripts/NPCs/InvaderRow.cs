@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class InvaderRow : IResetable
+public class InvaderRow : IResetable, IDeadable
 {
     [SerializeField] int _invaderCount = 5;
     [SerializeField] int _rowWidth = 10;
@@ -17,6 +17,7 @@ public class InvaderRow : IResetable
     List<Invader> _invaders = new();
 
     public bool ActiveAtStart { get; set; }
+    public bool IsDead => _invaders.All(inv => inv.IsDead);
 
     float _moveTimer = 0;
 
