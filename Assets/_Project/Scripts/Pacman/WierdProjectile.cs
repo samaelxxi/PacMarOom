@@ -5,6 +5,7 @@ using UnityEngine;
 public class WierdProjectile : MonoBehaviour
 {
     [SerializeField] float _lifeTime = 5f;
+    [SerializeField] BulletHit _bulletHit;
 
     Vector3 _velocity;
     int _damage;
@@ -33,5 +34,7 @@ public class WierdProjectile : MonoBehaviour
             damageable.TakeDamage(_damage);
 
         Destroy(gameObject);
+
+        Instantiate(_bulletHit, other.contacts[0].point, Quaternion.identity);
     }
 }
