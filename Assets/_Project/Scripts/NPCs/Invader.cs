@@ -27,6 +27,8 @@ public class Invader : NPC
         if (_invulnerableTimer > 0)
             return;
 
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: UnityEngine.Random.Range(0.9f, 1.1f));
+
         _health -= damage;
         if (_health <= 0)
         {
@@ -47,10 +49,22 @@ public class Invader : NPC
         this.InSeconds(UnityEngine.Random.Range(_shootTime - _shootTime*0.2f, _shootTime + _shootTime*0.2f), () => Shoot());
     }
 
+
+    List<GameObject> _projectiles = new();
     void Shoot()
     {
         var projectile = Instantiate(_projectilePrefab, _shootPoint.position, transform.rotation, transform.parent);
+        _projectiles.Add(projectile.gameObject);
         projectile.Setup(transform.forward, _stats.ProjectileSpeed, _stats.Damage);
         PrepareShoot();
+    }
+
+    public override void Reset()
+    {
+        foreach (var projectile in _projectiles)
+            if (projectile != null) Destroy(projectile);
+        _projectiles.Clear();
+        _health = _stats.Health;
+        gameObject.SetActive(true);
     }
 }

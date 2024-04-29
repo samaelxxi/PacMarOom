@@ -10,6 +10,7 @@ public class WierdWeapon : MonoBehaviour, IWeapon
     [SerializeField] Transform _shootPoint;
 
     public event Action<int> OnAmmoChanged;
+    public event Action OnAmmoAdded;
 
     public int Ammo => _ammo;
 
@@ -27,13 +28,15 @@ float _cooldownTimer = 0f;
     public void Setup(PacmanStats stats)
     {
         _stats = stats;
-        _ammo = _stats.WierdAmmo;
+        AddAmmo(stats.WierdAmmo);
     }
 
     public void AddAmmo(int ammo)
     {
         _ammo += ammo;
         OnAmmoChanged?.Invoke(_ammo);
+        if (ammo > 0)
+            OnAmmoAdded?.Invoke();
     }
 
     public void TryShoot()

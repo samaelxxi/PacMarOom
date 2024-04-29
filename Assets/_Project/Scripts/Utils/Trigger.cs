@@ -36,6 +36,11 @@ public class Trigger : MonoBehaviour
         Game.Instance.RespawnPacman();
     }
 
+    public void DamageAndTeleportPacman()
+    {
+        Game.Instance.DamageAndTeleportPacman();
+    }
+
     public void SetNewCheckpoint(Transform checkpoint)
     {
         Game.Instance.SetNewCheckpoint(checkpoint);

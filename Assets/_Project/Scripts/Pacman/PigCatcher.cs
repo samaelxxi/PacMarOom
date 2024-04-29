@@ -23,14 +23,15 @@ public class PigCatcher : MonoBehaviour, IWeapon
         _triggerObserver = GetComponentInChildren<TriggerObserver>();
         _triggerObserver.SetTestPredicate((Collider other) => other.gameObject.layer == LayerMask.NameToLayer("Pig"));
         _triggerObserver.OnTriggerEnterEvent += OnPiggyCatched;
-        // _triggerObserver.SetOnlyOnce(true);
+        _triggerObserver.SetOnlyOnce(true);
         _catchZone = GetComponentInChildren<SphereCollider>();
         _splineAnimate = GetComponentInChildren<SplineAnimate>();
     }
 
     void OnPiggyCatched(Collider pigCollider)
     {
-        Debug.Log($"Piggy catched {pigCollider.name}");
+        Debug.Log("Piggy catched");
+        Game.Instance.CatchPig();
         if (pigCollider.transform.parent.TryGetComponent(out FlyingPig pig))
         {
             pig.BeCatched();

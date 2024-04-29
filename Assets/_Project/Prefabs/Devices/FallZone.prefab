@@ -50,7 +50,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9023173553020453227}
         m_TargetAssemblyTypeName: Trigger, Assembly-CSharp
-        m_MethodName: PacmanRespawn
+        m_MethodName: DamageAndTeleportPacman
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -60,6 +60,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onlyOnce: 0
+  _resetOnRespawn: 0
   _layerMask:
     serializedVersion: 2
     m_Bits: 128

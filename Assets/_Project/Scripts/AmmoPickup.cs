@@ -11,7 +11,13 @@ public class AmmoPickup : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
             Game.Instance.AddWierdAmmo(_ammo);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
+
+    // public override void Reset()
+    // {
+    //     Debug.Log("Resetting AmmoPickup");
+    //     gameObject.SetActive(true);
+    // }
 }

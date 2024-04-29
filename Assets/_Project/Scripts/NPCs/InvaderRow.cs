@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class InvaderRow : MonoBehaviour
+public class InvaderRow : IResetable, IDeadable
 {
     [SerializeField] int _invaderCount = 5;
     [SerializeField] int _rowWidth = 10;
@@ -15,6 +15,9 @@ public class InvaderRow : MonoBehaviour
     [SerializeField] Invader _firstInvader;
 
     List<Invader> _invaders = new();
+
+    public bool ActiveAtStart { get; set; }
+    public bool IsDead => _invaders.All(inv => inv.IsDead);
 
     float _moveTimer = 0;
 
@@ -57,6 +60,8 @@ public class InvaderRow : MonoBehaviour
         if (!_initialDirectionIsRight)
             _invaders.Reverse();
     }
+
+
 
     void Update()
     {
@@ -110,5 +115,10 @@ public class InvaderRow : MonoBehaviour
             Gizmos.color = isInvader ? Color.red : Color.white;
             Gizmos.DrawWireCube(position, Vector3.one * _cellWidth);
         }
+    }
+
+    public override void Reset()
+    {
+        
     }
 }

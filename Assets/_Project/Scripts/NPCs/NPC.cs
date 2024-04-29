@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NPC : IResetable, IDeadable
 {
     protected Fsm _fsm;
 
@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour
     protected Vector3 _targetPosition;
     protected Vector3 TargetDirection => _targetPosition - transform.position;
 
+    protected virtual int Health => 1;
     protected virtual float RotationSpeed => 0;
     protected virtual float Speed => 0;
     protected virtual float SightRange => 0;
@@ -26,9 +27,20 @@ public class NPC : MonoBehaviour
     MeshRenderer _meshRenderer;
 
 
+    bool _isDead = false;
+    bool _isSpawned = false;
+    public bool IsSpawned => _isSpawned;
+
+    public bool IsDead => _isDead;
+
+    Vector3 _startPosition;
+    Quaternion _startRotation;
+
     protected virtual void Awake()
     {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _startPosition = transform.position;
+        _startRotation = transform.rotation;
     }
 
     protected virtual void Update()
@@ -37,11 +49,21 @@ public class NPC : MonoBehaviour
             _invulnerableTimer -= Time.deltaTime;
     }
 
+    public override void Reset()
+    {
+        transform.position = _startPosition;
+        transform.rotation = _startRotation;
+        _health = Health;
+        _isDead = false;
+        Debug.Log("Resetting NPC");
+        gameObject.SetActive(true);
+    }
+
     public virtual void TakeDamage(int damage)
     {
         if (_invulnerableTimer > 0)
             return;
-        Debug.Log("Auch");
+        Game.Instance.AudioManager.PlayRange(Sounds.EnemyHurts, pitch: Random.Range(0.9f, 1.1f));
         _health -= damage;
         if (_health <= 0)
             Die();
@@ -51,7 +73,8 @@ public class NPC : MonoBehaviour
 
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        _isDead = true;
     }
 
     protected void BecomeInvulnerable(float duration)
