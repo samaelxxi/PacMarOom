@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
     [SerializeField] TextMeshProUGUI _pigsText;
     [SerializeField] Image _overlay;
     [SerializeField] Image _blinkingOverlay;
+    [SerializeField] Transform _head;
 
 
     float _levelStartTime;
@@ -31,6 +32,7 @@ public class HUD : MonoBehaviour
         _worldText.text = Game.Instance.Level.WorldName;
         SetNewScore(0);
         SetNewPigs(0);
+        StartCoroutine(MoveHead());
     }
 
     void Update()
@@ -40,6 +42,16 @@ public class HUD : MonoBehaviour
         {
             _curSeconds = (int)time;
             _timeText.text = ((int)time).ToString();
+        }
+    }
+
+    IEnumerator MoveHead()
+    {
+        while (true)
+        {
+            Vector3 newRotation = new(Random.Range(-10, 10), -180 + Random.Range(-10, 10), Random.Range(-5, 5));
+            _head.DORotate(newRotation, 3f).SetEase(Ease.InOutSine);
+            yield return new WaitForSeconds(2f);
         }
     }
 
