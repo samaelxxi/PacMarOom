@@ -62,6 +62,7 @@ public class Game : Singleton<Game>
         _pacman.OnDamaged += _hud.GetDamaged;
         _pacman.OnInvulnerable += _hud.OnInvulnerable;
         _pacman.OnVulnerable += _hud.OnVulnerable;
+        _pacman.OnHeal += _hud.GetHeal;
         Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
     }
 
@@ -89,6 +90,7 @@ public class Game : Singleton<Game>
         }
         OnPacmanRespawn?.Invoke();
         _pacman.Respawn(_level.PlayerSpawnPoint);
+        _pacman.WierdWeapon.SetAmmo(_level.CheckPointAmmo);
         
         var resetables = FindObjectsOfType<IResetable>(true);
         foreach (var resetable in resetables)

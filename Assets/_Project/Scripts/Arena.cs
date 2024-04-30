@@ -10,6 +10,8 @@ public class Arena : IResetable
     struct WaveObjects
     {
         public List<GameObject> _enemies;
+        public UnityEvent _onWaveStart;
+        public UnityEvent _onWaveComplete;
     }
 
     [SerializeField] List<WaveObjects> _waves = new();
@@ -48,6 +50,7 @@ public class Arena : IResetable
     {
         _waveInProgress = true;
         _waves[_currentWave]._enemies.ForEach(enemy => enemy.gameObject.SetActive(true));
+        _waves[_currentWave]._onWaveStart?.Invoke();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class Arena : IResetable
             if (_waves[_currentWave]._enemies.All(enemy => (enemy.GetComponent<IDeadable>() as IDeadable).IsDead))
             {
                 _waveInProgress = false;
+                _waves[_currentWave]._onWaveComplete?.Invoke();
                 _currentWave++;
                 if (_currentWave < _waves.Count)
                 {

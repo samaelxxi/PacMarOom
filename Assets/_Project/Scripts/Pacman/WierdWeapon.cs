@@ -39,6 +39,12 @@ public class WierdWeapon : MonoBehaviour, IWeapon
             OnAmmoAdded?.Invoke();
     }
 
+    public void SetAmmo(int ammo)
+    {
+        _ammo = ammo;
+        OnAmmoChanged?.Invoke(_ammo);
+    }
+
     public void TryShoot()
     {
         if (_cooldownTimer > 0 || _ammo <= 0)
