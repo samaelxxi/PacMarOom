@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Splines;
 using System;
+using UnityEngine.Events;
 
 public class FlyingPig : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class FlyingPig : MonoBehaviour
     [SerializeField] float _sightRange = 5f;
     [SerializeField] Transform _mesh;
     [SerializeField] int _catchScore = 500;
+
+    [SerializeField] UnityEvent OnCatched;
 
     Transform _pacman;
     float _currentSplinePos = 0;
@@ -183,6 +186,7 @@ public class FlyingPig : MonoBehaviour
         Destroy(gameObject);
         Game.Instance.AudioManager.Play("megaOink", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         Game.Instance.AddScore(_catchScore);
+        OnCatched?.Invoke();
     }
 
     public void Oink()

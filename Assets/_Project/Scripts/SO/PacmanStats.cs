@@ -11,6 +11,7 @@ public class PacmanStats : ScriptableObject
     [field: SerializeField] public float MouseSensitivity { get; private set; } = 2;
     [field: SerializeField] public float Gravity { get; private set; } = 1;
     [field: SerializeField] public float JumpForce { get; private set; } = 5;
+    [field: SerializeField] public float JumpWindow { get; private set; } = 0.1f;
     [field: SerializeField] public int JumpDamage { get; private set; } = 1;
 
 
