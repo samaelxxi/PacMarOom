@@ -34,6 +34,8 @@ public class FlyingPig : MonoBehaviour
 
     Tween _flyTween;
 
+    bool _isIdle = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,14 +46,14 @@ public class FlyingPig : MonoBehaviour
         _runState = Fsm_RunState;
         _fsm.Start(_idleState);
         _flyTween = _mesh.DOLocalMoveY(0.5f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        UpdatePosOnSpline();
+        // UpdatePosOnSpline();
         ScheduleLag();
     }
 
     void Update()
     {
         _fsm.OnUpdate();
-
+        UpdatePosOnSpline();
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir*_direction), 360 * Time.deltaTime);
     }
 
@@ -87,7 +89,11 @@ public class FlyingPig : MonoBehaviour
 
     void Fsm_IdleState(Fsm fsm, Fsm.Step step, Fsm.State state)
     {
-        if (step == Fsm.Step.Update)
+        if (step == Fsm.Step.Enter)
+        {
+            _isIdle = true;
+        }
+        else if (step == Fsm.Step.Update)
         {
             if (_currentSpeed < _maxSpeed)
             {
@@ -97,6 +103,10 @@ public class FlyingPig : MonoBehaviour
             }
             if (Vector3.Distance(transform.position, _pacman.position) < _sightRange)
                 fsm.TransitionTo(_runState);
+        }
+        else if (step == Fsm.Step.Exit)
+        {
+            _isIdle = false;
         }
     }
 
@@ -145,7 +155,7 @@ public class FlyingPig : MonoBehaviour
     {
         _currentSpeed -= _speedReducePerSecond * Time.deltaTime;
         _currentSpeed = Mathf.Max(_currentSpeed, _minSpeed);
-        UpdatePosOnSpline();
+        // UpdatePosOnSpline();
     }
 
 
@@ -153,7 +163,7 @@ public class FlyingPig : MonoBehaviour
     private void UpdatePosOnSpline()
     {
         var splineLength = _route.Spline.GetLength();
-        _currentSplinePos = (_currentSplinePos + _currentSpeed * _direction * Time.deltaTime) % splineLength;
+        _currentSplinePos = (_currentSplinePos + _currentSpeed * _direction * Time.deltaTime * (_isIdle ? 0 : 1)) % splineLength;
         if (_currentSplinePos < 0)
             _currentSplinePos += splineLength;
 
