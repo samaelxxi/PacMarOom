@@ -33,10 +33,9 @@ public class Invader : NPC
         _health -= damage;
         if (_health <= 0)
         {
-            gameObject.SetActive(false);
             Game.Instance.AddScore(_killScore);
             Game.Instance.AudioManager.Play("invaderDied", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
-
+            Die();
         }
         else
         {
@@ -48,7 +47,6 @@ public class Invader : NPC
     protected override void Die()
     {
         base.Die();
-
     }
 
     public void Move(Vector3 displacement)
