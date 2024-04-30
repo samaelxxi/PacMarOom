@@ -14,6 +14,7 @@ public class Pacman : MonoBehaviour
 
     public event Action<int> OnHealthChanged;
     public event Action OnDamaged;
+    public event Action OnHeal;
     public event Action OnInvulnerable;
     public event Action OnVulnerable;
 
@@ -62,6 +63,13 @@ public class Pacman : MonoBehaviour
     {
         _health = health;
         OnHealthChanged?.Invoke(_health);
+    }
+
+    public void Heal()
+    {
+        SetHealth(_stats.Health);
+        OnHealthChanged?.Invoke(_health);
+        OnHeal?.Invoke();
     }
 
     void ChangeWeapon(int weapon)

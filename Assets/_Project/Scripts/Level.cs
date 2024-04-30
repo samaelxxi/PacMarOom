@@ -22,6 +22,9 @@ public class Level : MonoBehaviour
 
     int _currentCheckpoint = 0;
 
+    public int CheckPointAmmo { get; private set; }
+
+
     void Awake()
     {
         Game.Instance.SetLevel(this);
@@ -37,8 +40,9 @@ public class Level : MonoBehaviour
             _worldName = worldName;
             OnNewWorld?.Invoke(_worldName);
         }
+        CheckPointAmmo = Game.Instance.Pacman.WierdWeapon.Ammo;
+        Game.Instance.Pacman.Heal();
     }
-
 
 
     public void AddScore(int score)

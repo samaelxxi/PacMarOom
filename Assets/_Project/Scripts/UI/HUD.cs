@@ -95,6 +95,11 @@ public class HUD : MonoBehaviour
         StartCoroutine(PigOverlay());
     }
 
+    public void GetHeal()
+    {
+        StartCoroutine(HealOverlay());
+    }
+
 
     Tween _blinkTween;
     public void OnInvulnerable()
@@ -113,7 +118,7 @@ public class HUD : MonoBehaviour
 
     enum OverlayType
     {
-        Damage, Bonus, Pig
+        Damage, Bonus, Pig, Heal
     }
 
     Queue<OverlayType> _overlayQueue = new();
@@ -146,6 +151,8 @@ public class HUD : MonoBehaviour
                 yield return BonusOverlay();
             else if (overlay == OverlayType.Pig)
                 yield return PigOverlay();
+            else if (overlay == OverlayType.Heal)
+                yield return HealOverlay();
         }
         else
         {
@@ -169,7 +176,14 @@ public class HUD : MonoBehaviour
         yield return ShowOverlay(_pigColor);
     }
 
+    IEnumerator HealOverlay()
+    {
+        yield return ShowOverlay(_healColor);
+    }
+
+
     Color _bonusColor = new(1, 0.85f, 0, 0.3f);
     Color _damageColor = new(1, 0, 0, 0.3f);
     Color _pigColor = new(1, 0, 0.6f, 0.3f);
+    Color _healColor = new(0, 1, 0, 0.3f);
 }
