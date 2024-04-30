@@ -15,7 +15,7 @@ MonoBehaviour:
   <Health>k__BackingField: 3
   <InvulnerableTime>k__BackingField: 2
   <Speed>k__BackingField: 7
-  <MouseSensitivity>k__BackingField: 2
+  <MouseSensitivity>k__BackingField: 300
   <Gravity>k__BackingField: 40
   <JumpForce>k__BackingField: 5
   <JumpWindow>k__BackingField: 0.1
