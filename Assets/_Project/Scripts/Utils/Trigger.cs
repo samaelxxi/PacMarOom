@@ -50,4 +50,14 @@ public class Trigger : MonoBehaviour
     {
         Game.Instance.SpawnEnemy(type, spawnPoint);
     }
+
+    public void ShowCatchTutorial()
+    {
+        Game.Instance.HUD.ShowTutorial();
+    }
+
+    public void HideCatchTutorial()
+    {
+        Game.Instance.HUD.HideTutorial();
+    }
 }

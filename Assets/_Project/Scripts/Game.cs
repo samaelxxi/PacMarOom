@@ -11,6 +11,7 @@ public class Game : Singleton<Game>
     public Pacman Pacman => _pacman;
     public AudioManager AudioManager => _audioManager;
     public Level Level => _level;
+    public HUD HUD => _hud;
 
     public event Action OnPacmanRespawn;
 
