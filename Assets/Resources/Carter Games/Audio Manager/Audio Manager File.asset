@@ -66,6 +66,8 @@ MonoBehaviour:
     value: {fileID: 8300000, guid: 7729fb5013bbf87409722b131c907407, type: 3}
   - key: playerShoot
     value: {fileID: 8300000, guid: 13a479aa08937a74088e718eed0676f0, type: 3}
+  - key: powerUp10
+    value: {fileID: 8300000, guid: b17a15daf05f82a47973914005676a4d, type: 3}
   - key: shit
     value: {fileID: 8300000, guid: 301704c49edd52a4e934ecb83ae96b08, type: 3}
   - key: shoot
