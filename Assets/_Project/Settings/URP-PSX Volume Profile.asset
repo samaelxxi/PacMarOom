@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 0
   scanlinesWeight:
     m_OverrideState: 1
-    m_Value: 0.64
+    m_Value: 1
   noiseWeight:
     m_OverrideState: 1
     m_Value: 1
@@ -91,13 +91,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a1bd58dd7548198609eabd8ae2bb7d, type: 3}
   m_Name: Pixelation
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   widthPixelation:
     m_OverrideState: 1
     m_Value: 512
   heightPixelation:
     m_OverrideState: 1
-    m_Value: 256
+    m_Value: 288
   colorPrecision:
     m_OverrideState: 1
     m_Value: 16

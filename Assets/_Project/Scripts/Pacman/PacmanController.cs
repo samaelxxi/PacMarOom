@@ -48,9 +48,9 @@ public class PacmanController : MonoBehaviour
 
     public void Teleport(Transform checkpoint)
     {
+        _controller.transform.Rotate(checkpoint.localRotation.eulerAngles);
         _controller.enabled = false;
         transform.position = checkpoint.position;
-        transform.rotation = checkpoint.rotation;
         _controller.enabled = true;
     }
 

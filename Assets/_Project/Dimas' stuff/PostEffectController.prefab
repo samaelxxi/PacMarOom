@@ -75,7 +75,7 @@ MonoBehaviour:
   volumeProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
   isEnabled: 1
   widthPixelation: 512
-  heightPixelation: 256
+  heightPixelation: 288
   colorPrecision: 16
 --- !u!114 &2174749080024175240
 MonoBehaviour:
