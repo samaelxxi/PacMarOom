@@ -69,6 +69,15 @@ public class Game : Singleton<Game>
         Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _hud.TogglePause();
+            Time.timeScale = _hud.IsPaused ? 0 : 1;
+        }
+    }
+
     public void CollectResetables()
     {
         var startResetables = FindObjectsOfType<IResetable>(true);

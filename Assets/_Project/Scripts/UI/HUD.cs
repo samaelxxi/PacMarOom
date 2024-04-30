@@ -17,10 +17,12 @@ public class HUD : MonoBehaviour
     [SerializeField] Image _blinkingOverlay;
     [SerializeField] Transform _head;
     [SerializeField] GameObject _tutorial;
+    [SerializeField] GameObject _pauseMenu;
 
 
     float _levelStartTime;
     int _curSeconds;
+    public bool IsPaused => _pauseMenu.activeSelf;
 
     void Awake()
     {
@@ -34,6 +36,12 @@ public class HUD : MonoBehaviour
         SetNewScore(0);
         SetNewPigs(0);
         StartCoroutine(MoveHead());
+    }
+
+    public void TogglePause()
+    {
+
+        _pauseMenu.SetActive(!_pauseMenu.activeSelf);
     }
 
     void Update()

@@ -79,9 +79,11 @@ public class PacmanController : MonoBehaviour
 
         Vector3 move = new(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         move = Vector3.ClampMagnitude(move, 1);
+        float magnitude = move.magnitude;
         move = transform.TransformDirection(move);
         move = move.SetY(0);
         move.Normalize();
+        move *= magnitude;
         // move = transform.TransformDirection(move);
         _controller.Move(_stats.Speed * Time.deltaTime * move);
 
@@ -127,15 +129,25 @@ public class PacmanController : MonoBehaviour
         Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * _stats.MouseSensitivity * Time.deltaTime;
 
         // Apply the rotation to the player
-        _controller.transform.Rotate(rotation);
+        // _controller.transform.Rotate(rotation);
 
-        
+        Vector3 targetRotation = _controller.transform.eulerAngles + new Vector3(-mouseY, mouseX, 0) * _stats.MouseSensitivity * Time.deltaTime;
+
         // Limit the rotation
-        Vector3 currentAngles = _controller.transform.eulerAngles;
-        if (currentAngles.x > 180f)
-            currentAngles.x -= 360f;
-        currentAngles.x = Mathf.Clamp(currentAngles.x, -60f, 60f);
-        _controller.transform.eulerAngles = currentAngles;
+        if (targetRotation.x > 180f)
+            targetRotation.x -= 360f;
+        targetRotation.x = Mathf.Clamp(targetRotation.x, -80f, 80f);
+
+        // // Limit the rotation
+        // Vector3 currentAngles = _controller.transform.eulerAngles;
+        // if (currentAngles.x > 180f)
+        //     currentAngles.x -= 360f;
+        // currentAngles.x = Mathf.Clamp(currentAngles.x, -80f, 80f);
+        // Quaternion currentRotation = _controller.transform.rotation;
+        Quaternion targetQuaternion = Quaternion.Euler(targetRotation);
+        // _controller.transform.rotation = Quaternion.Slerp(currentRotation, targetQuaternion, Time.deltaTime * 45);
+        _controller.transform.rotation = targetQuaternion;
+
 
         // Ensure the player's z rotation stays at 0
         _controller.transform.eulerAngles = new Vector3(_controller.transform.eulerAngles.x, _controller.transform.eulerAngles.y, 0);
