@@ -143,6 +143,7 @@ public class Ghostie : NPC
         {
             _idleStateTimer = 0;
             _idleWaitTime = UnityEngine.Random.Range(1, 3);
+            _deadMesh.SetActive(false);
         }
         else if (step == Fsm.Step.Update)
         {
@@ -158,6 +159,7 @@ public class Ghostie : NPC
     {
         if (step == Fsm.Step.Enter)
         {
+            _deadMesh.SetActive(false);
             FindNewPatrolPosition();
         }
         else if (step == Fsm.Step.Update)
@@ -219,6 +221,7 @@ public class Ghostie : NPC
     {
         if (step == Fsm.Step.Enter)
         {
+            _deadMesh.SetActive(false);
             _attackDamageDealt = false;
             _attackStateTimer = 0;
             _attackArea.gameObject.SetActive(true);
@@ -246,7 +249,6 @@ public class Ghostie : NPC
     Tween _deadTween;
     private void Fsm_DeadState(Fsm fsm, Fsm.Step step, Fsm.State state)
     {
-
         if (step == Fsm.Step.Enter)
         {
             // Debug.Log($"{gameObject.name} Dead");

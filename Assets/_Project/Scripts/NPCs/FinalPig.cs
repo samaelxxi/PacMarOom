@@ -8,14 +8,7 @@ public class FinalPig : MonoBehaviour
 {
     Tween _flyTween;
     [SerializeField] Transform _mesh;
-    [SerializeField] SplineContainer _route;
-    [SerializeField] float _currentSpeed = 5;
     [SerializeField] float _verticalOffset = 1;
-
-
-    float _currentSplinePos = 0;
-    int _direction = 1;
-
 
     // Start is called before the first frame update
     void Start()
