@@ -33,7 +33,7 @@ public class Level : MonoBehaviour
 
     public void SetNewCheckpoint(Transform checkpoint)
     {
-        _playerSpawnPoint.position = checkpoint.position;
+        _playerSpawnPoint = checkpoint;
         _currentCheckpoint++;
         string worldName = $"{_currentCheckpoint/5 + 1}-{_currentCheckpoint%5}";
         if (worldName != _worldName)
