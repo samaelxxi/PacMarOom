@@ -23,6 +23,8 @@ public class FinalPig : MonoBehaviour
                             UnityEngine.Random.Range(-0.7f, 0.7f), 
                             UnityEngine.Random.Range(-0.7f, 0.7f));
         _mesh.transform.localPosition = pos;
+        var scale = UnityEngine.Random.Range(0.8f, 1.6f);
+        _mesh.localScale = new Vector3(scale, scale, scale);
     }
 
     IEnumerator LagPosition()
@@ -36,6 +38,7 @@ public class FinalPig : MonoBehaviour
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.02f, 0.04f));
         }
         _mesh.transform.localPosition = oldPos;
+        _mesh.localScale = Vector3.one;
         _flyTween.Play();
         ScheduleLag();
     }
