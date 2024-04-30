@@ -15,6 +15,7 @@ public class WierdWeapon : MonoBehaviour, IWeapon
     public int Ammo => _ammo;
 
     PacmanStats _stats;
+    Animator _animator;
 
     int _ammo;
 
@@ -23,6 +24,11 @@ public class WierdWeapon : MonoBehaviour, IWeapon
 
     public void Equip()
     {
+    }
+
+    void Awake()
+    {
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public void Setup(PacmanStats stats)
@@ -56,6 +62,7 @@ public class WierdWeapon : MonoBehaviour, IWeapon
         projectile.Setup(_shootPoint.forward, _stats.WierdProjectileSpeed, _stats.WierdDamage);
         Game.Instance.AudioManager.Play("playerShoot", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
         AddAmmo(-1);
+        _animator.SetTrigger("Shoot");
     }
 
     void Update()
