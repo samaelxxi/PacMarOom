@@ -18,6 +18,9 @@ public class PacmanController : MonoBehaviour
 
     Camera _camera;
 
+    float _jumpClickedTime = 0f;
+    bool _jumpRequested = false;
+
     public void Setup(PacmanStats stats)
     {
         _stats = stats;
@@ -77,13 +80,23 @@ public class PacmanController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            _jumpClickedTime = Time.time;
+            _jumpRequested = true;
+        }
+
+        if (_jumpRequested)
+        {
             if (_groundedTimer > 0)
             {
                 _groundedTimer = 0;
                 _verticalVelocity += Mathf.Sqrt(_stats.JumpForce * 2 * _stats.Gravity);
                 Game.Instance.AudioManager.Play("jump", pitch: UnityEngine.Random.Range(0.9f, 1.1f), volume: 0.7f);
+                _jumpRequested = false;
             }
         }
+
+        if (Time.time - _jumpClickedTime > _stats.JumpWindow)
+            _jumpRequested = false;
 
         move.y = _verticalVelocity;
 
