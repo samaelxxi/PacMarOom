@@ -493,10 +493,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5938565052094144085}
     m_Modifications:
+    - target: {fileID: 701936710412508499, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec6e67e10b7d0654da4825fa1dffac4d,
+        type: 3}
     - target: {fileID: 2125500980453148485, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936386045846075460, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.2171135
       objectReference: {fileID: 0}
     - target: {fileID: 3073779152442674753, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
         type: 3}
@@ -602,6 +613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.x
       value: -69.81348
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120836406722379988, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5336423002592578540, guid: 3acaa730ee396944da7fa9ff5ac80c9d,
         type: 3}
