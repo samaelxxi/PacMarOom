@@ -60,4 +60,9 @@ public class Trigger : MonoBehaviour
     {
         Game.Instance.HUD.HideTutorial();
     }
+
+    public void GoToFinal()
+    {
+        Game.Instance.GoToFinal();
+    }
 }

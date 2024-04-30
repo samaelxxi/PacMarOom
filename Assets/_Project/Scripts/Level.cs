@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
 
     public int Score => _score;
     public string WorldName => _worldName;
+    public int Pigs => _pigs;
 
     int _score = 0;
     int _pigs = 0;
@@ -52,9 +53,13 @@ public class Level : MonoBehaviour
         OnScoreAdded?.Invoke(_score);
     }
 
-    public void CatchPig()
+
+    List<int> _pigColors = new List<int>();
+    public List<int> PigColors => _pigColors;
+    public void CatchPig(int HatColor)
     {
         _pigs++;
+        _pigColors.Add(HatColor);
         OnPigsAdded?.Invoke(_pigs);
     }
 

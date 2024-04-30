@@ -31,10 +31,11 @@ public class PigCatcher : MonoBehaviour, IWeapon
     void OnPiggyCatched(Collider pigCollider)
     {
         Debug.Log("Piggy catched");
-        Game.Instance.CatchPig();
+        
         if (pigCollider.transform.parent.TryGetComponent(out FlyingPig pig))
         {
             pig.BeCatched();
+            Game.Instance.CatchPig(pig.HatColor);
         }
     }
 

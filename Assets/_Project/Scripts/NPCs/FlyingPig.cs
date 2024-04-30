@@ -17,8 +17,11 @@ public class FlyingPig : MonoBehaviour
     [SerializeField] float _sightRange = 5f;
     [SerializeField] Transform _mesh;
     [SerializeField] int _catchScore = 500;
+    [SerializeField] int _color = 0;
 
     [SerializeField] UnityEvent OnCatched;
+
+    public int HatColor => _color;
 
     Transform _pacman;
     float _currentSplinePos = 0;

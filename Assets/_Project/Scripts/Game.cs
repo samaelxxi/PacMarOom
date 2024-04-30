@@ -5,6 +5,7 @@ using System.Linq;
 using CarterGames.Assets.AudioManager;
 using DesignPatterns.Singleton;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : Singleton<Game>
 {
@@ -119,9 +120,9 @@ public class Game : Singleton<Game>
         _pacman.WierdWeapon.AddAmmo(ammo);
     }
 
-    public void CatchPig()
+    public void CatchPig(int hatColor)
     {
-        _level.CatchPig();
+        _level.CatchPig(hatColor);
     }
 
     public void SpawnEnemy(EnemyType type, Transform spawnPoint)
@@ -143,5 +144,14 @@ public class Game : Singleton<Game>
     public void InitPacmanOnLevel()
     {
         _pacman.Teleport(_level.PlayerSpawnPoint);
+    }
+
+    List<int> _pigs;
+    public List<int> Pigs => _pigs;
+    public void GoToFinal()
+    {
+        _pigs = new();
+        _pigs.AddRange(_level.PigColors);
+        SceneManager.LoadScene("Final");
     }
 }
