@@ -95,7 +95,7 @@ public class Game : Singleton<Game>
         var resetables = FindObjectsOfType<IResetable>(true);
         foreach (var resetable in resetables)
         {
-            Debug.Log($"Resetting {resetable.gameObject.name}");
+            // Debug.Log($"Resetting {resetable.gameObject.name}");
             resetable.gameObject.SetActive(true);
             resetable.Reset();
             resetable.gameObject.SetActive(resetable.ActiveOnStart);

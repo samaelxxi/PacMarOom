@@ -49,12 +49,13 @@ public class PacmanController : MonoBehaviour
             OnChangeWeaponClicked?.Invoke(1);
     }
 
+
     public void Teleport(Transform checkpoint)
     {
-        _controller.transform.Rotate(checkpoint.localRotation.eulerAngles);
-        _controller.enabled = false;
+        this.OnEndOfFrame(delegate {_controller.transform.rotation = checkpoint.rotation;
+                _controller.enabled = false;
         transform.position = checkpoint.position;
-        _controller.enabled = true;
+        _controller.enabled = true;});
     }
 
     void Movement()
@@ -117,8 +118,6 @@ public class PacmanController : MonoBehaviour
         // Get the mouse's movement
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
-
-
 
         // Apply the mouse movement as rotation
         Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * _stats.MouseSensitivity * Time.deltaTime;
