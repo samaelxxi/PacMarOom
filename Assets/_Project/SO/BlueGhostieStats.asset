@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a8b29075f2664fac3cdadf2b54dd5, type: 3}
   m_Name: BlueGhostieStats
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 90
-  <ChaseSpeed>k__BackingField: 3
+  <ChaseSpeed>k__BackingField: 7
   <Damage>k__BackingField: 1
   <Health>k__BackingField: 5
   <InvulnerableTime>k__BackingField: 0.5
-  <SightRange>k__BackingField: 12
-  <ForgetRange>k__BackingField: 14
-  <AttackDelay>k__BackingField: 0.4
+  <SightRange>k__BackingField: 20
+  <ForgetRange>k__BackingField: 22
+  <AttackDelay>k__BackingField: 1
   <AttackRange>k__BackingField: 4
-  <AttackCooldown>k__BackingField: 1
+  <AttackCooldown>k__BackingField: 2
   <AttackDuration>k__BackingField: 1

@@ -19,7 +19,7 @@ MonoBehaviour:
   <Gravity>k__BackingField: 40
   <JumpForce>k__BackingField: 5
   <JumpWindow>k__BackingField: 0.1
-  <JumpDamage>k__BackingField: 1
+  <JumpDamage>k__BackingField: 2
   <WierdDamage>k__BackingField: 1
   <WierdShootCooldown>k__BackingField: 0.5
   <WierdProjectileSpeed>k__BackingField: 45

@@ -57,6 +57,7 @@ MonoBehaviour:
   _killScore: 100
   _aliveMesh: {fileID: 6270072415622459316}
   _deadMesh: {fileID: 7783986755514954591}
+  _collider: {fileID: 0}
 --- !u!54 &8490146536409101454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163,8 +164,8 @@ Transform:
   m_GameObject: {fileID: 7516671191115379063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.329, z: 0.87}
-  m_LocalScale: {x: 1.8466, y: 1.3442674, z: 0.49014}
+  m_LocalPosition: {x: 0, y: 0.296, z: 0.87}
+  m_LocalScale: {x: 1.8466, y: 0.6, z: 0.49014}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2894295068789137223}
@@ -184,7 +185,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7516671191115379063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
