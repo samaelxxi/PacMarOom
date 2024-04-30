@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Briks
+  m_Name: StonesDark
   m_Shader: {fileID: -6465566751694194690, guid: 3c2c5a12835202444a5f5db8a97afdf2,
     type: 3}
   m_Parent: {fileID: 0}
@@ -48,7 +48,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Smoothness: 0
+    - _Tileng: 1
+    m_Colors:
+    - _Tint: {r: 0.39101994, g: 0.6787554, b: 0.8207547, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3665532361393373069
 MonoBehaviour:
