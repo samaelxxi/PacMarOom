@@ -16734,6 +16734,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4450bdfb9313ee242aa5bef249c6cb4b, type: 2}
     - target: {fileID: 5694669765492458749, guid: a3fbe8a2339415e4d9b54687396a6ef8,
         type: 3}
+      propertyPath: _color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694669765492458749, guid: a3fbe8a2339415e4d9b54687396a6ef8,
+        type: 3}
       propertyPath: _maxSpeed
       value: 9
       objectReference: {fileID: 0}
@@ -21459,7 +21464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1017566829
 Transform:
   m_ObjectHideFlags: 0
@@ -34480,6 +34485,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 156204722}
     m_Modifications:
+    - target: {fileID: 1318656731373620203, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: _color
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1318656731373620203, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
       propertyPath: _route
