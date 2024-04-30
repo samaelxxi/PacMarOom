@@ -16,6 +16,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Image _overlay;
     [SerializeField] Image _blinkingOverlay;
     [SerializeField] Transform _head;
+    [SerializeField] GameObject _tutorial;
 
 
     float _levelStartTime;
@@ -53,6 +54,16 @@ public class HUD : MonoBehaviour
             _head.DORotate(newRotation, 3f).SetEase(Ease.InOutSine);
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    public void ShowTutorial()
+    {
+        _tutorial.SetActive(true);
+    }
+
+    public void HideTutorial()
+    {
+        _tutorial.SetActive(false);
     }
 
     public void SetNewScore(int score)

@@ -11,6 +11,7 @@ public class Game : Singleton<Game>
     public Pacman Pacman => _pacman;
     public AudioManager AudioManager => _audioManager;
     public Level Level => _level;
+    public HUD HUD => _hud;
 
     public event Action OnPacmanRespawn;
 
@@ -95,7 +96,7 @@ public class Game : Singleton<Game>
         var resetables = FindObjectsOfType<IResetable>(true);
         foreach (var resetable in resetables)
         {
-            Debug.Log($"Resetting {resetable.gameObject.name}");
+            // Debug.Log($"Resetting {resetable.gameObject.name}");
             resetable.gameObject.SetActive(true);
             resetable.Reset();
             resetable.gameObject.SetActive(resetable.ActiveOnStart);

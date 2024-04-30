@@ -111,6 +111,6 @@ public class Pacman : MonoBehaviour
         }
         
         if (transform.position.y < -100)
-            Game.Instance.RespawnPacman();
+            Game.Instance.DamageAndTeleportPacman();
     }
 }
