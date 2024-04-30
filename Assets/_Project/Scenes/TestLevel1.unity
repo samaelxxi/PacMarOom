@@ -14967,6 +14967,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PigArea
       objectReference: {fileID: 0}
+    - target: {fileID: 1652534337483222870, guid: a3fbe8a2339415e4d9b54687396a6ef8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35671403eb7a4b74f84039fcbf75dffb, type: 2}
     - target: {fileID: 1766451128946592533, guid: a3fbe8a2339415e4d9b54687396a6ef8,
         type: 3}
       propertyPath: m_Splines.Array.size
@@ -16722,6 +16727,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4839442246587976250, guid: a3fbe8a2339415e4d9b54687396a6ef8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4450bdfb9313ee242aa5bef249c6cb4b, type: 2}
     - target: {fileID: 5694669765492458749, guid: a3fbe8a2339415e4d9b54687396a6ef8,
         type: 3}
       propertyPath: _maxSpeed
@@ -20158,6 +20168,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1167346124}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &962080151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1167346124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea12da010f7111e42aebc6eb5b460fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &963245456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21437,7 +21459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1017566829
 Transform:
   m_ObjectHideFlags: 0
@@ -24755,12 +24777,37 @@ PrefabInstance:
     - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
         type: 3}
       propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+        type: 3}
+      propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+        type: 3}
+      propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 962080151}
     - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
         type: 3}
       propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+        type: 3}
+      propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+        type: 3}
+      propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Trigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664351518307172330, guid: b4744feb46faa424b888fd506e5dd7f3,
+        type: 3}
+      propertyPath: _onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8502735302301021543, guid: b4744feb46faa424b888fd506e5dd7f3,
         type: 3}
@@ -34518,6 +34565,11 @@ PrefabInstance:
       propertyPath: OnCatched.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2189435103208473900, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e75fd4e8c26da341991970ee14d70aa, type: 2}
     - target: {fileID: 3826064638320061545, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34568,6 +34620,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5450960338276360256, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e75fd4e8c26da341991970ee14d70aa, type: 2}
     - target: {fileID: 7675223832764349840, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
       propertyPath: m_Name
@@ -37221,6 +37278,11 @@ PrefabInstance:
       propertyPath: OnCatched.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2189435103208473900, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d3b25eba6a92724ab785ada15fa9b5e, type: 2}
     - target: {fileID: 3826064638320061545, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37271,10 +37333,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5450960338276360256, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d3b25eba6a92724ab785ada15fa9b5e, type: 2}
     - target: {fileID: 7675223832764349840, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
       propertyPath: m_Name
       value: FlyingPig
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675223832764349840, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8445636270663303296, guid: dde84e9ee2c4c9c418c7c0b747b379e6,
         type: 3}
