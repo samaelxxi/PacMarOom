@@ -6,6 +6,8 @@ using TMPro;
 public class Final : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _pigText;
+    [SerializeField] TextMeshProUGUI _scoreText;
+    [SerializeField] TextMeshProUGUI _collectibleText;
     [SerializeField] List<GameObject> _pigs;
 
     List<int> _pigColors = new List<int>();
@@ -18,6 +20,8 @@ public class Final : MonoBehaviour
 
     void Start()
     {
+        _scoreText.text = Game.Instance.EndScore.ToString();
+        _collectibleText.text = Game.Instance.EndCoins.ToString();
         GetEndPigs();
         StartCoroutine(EnablePigs());
     }

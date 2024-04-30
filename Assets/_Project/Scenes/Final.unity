@@ -1327,7 +1327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.669}
+  m_AnchoredPosition: {x: 0, y: -2.629}
   m_SizeDelta: {x: 7.26, y: 4.08}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &559320054
@@ -1836,7 +1836,6 @@ MonoBehaviour:
   _route: {fileID: 589552267}
   _currentSpeed: 2
   _verticalOffset: 1
-  _splineAnimate: {fileID: 0}
 --- !u!1 &645540675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.029999971}
+  m_AnchoredPosition: {x: 0, y: 0.01}
   m_SizeDelta: {x: 7.2600007, y: 4.08}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &758170997
@@ -2806,7 +2805,6 @@ MonoBehaviour:
   _route: {fileID: 1031429958}
   _currentSpeed: 2
   _verticalOffset: 1
-  _splineAnimate: {fileID: 0}
 --- !u!114 &1219842230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4765,7 +4763,6 @@ MonoBehaviour:
   _route: {fileID: 1660955025}
   _currentSpeed: 2
   _verticalOffset: 1
-  _splineAnimate: {fileID: 0}
 --- !u!1 &1694776218
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,6 +5280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pigText: {fileID: 1694776220}
+  _scoreText: {fileID: 1411941171}
+  _collectibleText: {fileID: 1286735164}
   _pigs:
   - {fileID: 1279578616}
   - {fileID: 856033578}

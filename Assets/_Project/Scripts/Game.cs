@@ -65,7 +65,7 @@ public class Game : Singleton<Game>
         _pacman.OnInvulnerable += _hud.OnInvulnerable;
         _pacman.OnVulnerable += _hud.OnVulnerable;
         _pacman.OnHeal += _hud.GetHeal;
-        Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
+        // Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
     }
 
     public void CollectResetables()
@@ -109,10 +109,12 @@ public class Game : Singleton<Game>
         _level.AddScore(score);
     }
 
+    int _collectibles = 0;
     public void GetCollectible(Collectible collectible)
     {
         _hud.GetBonus();
         AddScore(collectible.Score);
+        _collectibles++;
     }
 
     public void AddWierdAmmo(int ammo)
@@ -148,9 +150,12 @@ public class Game : Singleton<Game>
 
     List<int> _pigs;
     public List<int> Pigs => _pigs;
+    public int EndScore { get; set; }
+    public int EndCoins => _collectibles;
     public void GoToFinal()
     {
         _pigs = new();
+        EndScore = _level.Score;
         _pigs.AddRange(_level.PigColors);
         SceneManager.LoadScene("Final");
     }

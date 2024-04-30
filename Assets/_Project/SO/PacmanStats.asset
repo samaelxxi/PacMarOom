@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef12ca4d79396f3439c766d6d71589cc, type: 3}
   m_Name: PacmanStats
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 3
+  <Health>k__BackingField: 5
   <InvulnerableTime>k__BackingField: 2
   <Speed>k__BackingField: 7
-  <MouseSensitivity>k__BackingField: 300
+  <MouseSensitivity>k__BackingField: 200
   <Gravity>k__BackingField: 40
   <JumpForce>k__BackingField: 5
   <JumpWindow>k__BackingField: 0.1
