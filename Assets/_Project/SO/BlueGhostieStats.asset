@@ -17,7 +17,7 @@ MonoBehaviour:
   <ChaseSpeed>k__BackingField: 7
   <Damage>k__BackingField: 1
   <Health>k__BackingField: 5
-  <InvulnerableTime>k__BackingField: 0.5
+  <InvulnerableTime>k__BackingField: 0.4
   <SightRange>k__BackingField: 20
   <ForgetRange>k__BackingField: 22
   <AttackDelay>k__BackingField: 1

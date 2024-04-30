@@ -38,6 +38,10 @@ MonoBehaviour:
     value: {fileID: 8300000, guid: 1af39204281f36f4fa96a12c7663a324, type: 3}
   - key: collectible
     value: {fileID: 8300000, guid: a7f73a8a13038c14ba5c26b7155c9c0c, type: 3}
+  - key: endShot
+    value: {fileID: 8300000, guid: e3a0986d1db467f4cac45176c6a7e328, type: 3}
+  - key: endSound
+    value: {fileID: 8300000, guid: 88720f4b8d6cca54382d21b0e29f2d14, type: 3}
   - key: ghostDamaged
     value: {fileID: 8300000, guid: 24f5568abf1092d439a2d7f712aac934, type: 3}
   - key: ghostDied

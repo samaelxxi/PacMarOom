@@ -24,7 +24,11 @@ public class Game : Singleton<Game>
 
     public void SetPacman(Pacman pacman) => _pacman = pacman;
     public void SetHUD(HUD hud) => _hud = hud;
-    public void SetLevel(Level level) => _level = level;
+    public void SetLevel(Level level) 
+    {
+        _level = level;
+        TotalCoins = FindObjectsOfType<Collectible>().Length;
+    }
 
 
     public override void Awake()
@@ -51,9 +55,6 @@ public class Game : Singleton<Game>
     public void Start()
     {
         CollectResetables();
-        Debug.Log(_pacman);
-        Debug.Log(_pacman.WierdWeapon);
-        Debug.Log(_hud);
         _pacman.WierdWeapon.OnAmmoChanged += _hud.SetNewWieirdAmmo;
         _pacman.WierdWeapon.OnAmmoAdded += _hud.GetBonus;
         _level.OnScoreAdded += _hud.SetNewScore;
@@ -65,7 +66,7 @@ public class Game : Singleton<Game>
         _pacman.OnInvulnerable += _hud.OnInvulnerable;
         _pacman.OnVulnerable += _hud.OnVulnerable;
         _pacman.OnHeal += _hud.GetHeal;
-        // Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
+        Game.Instance.AudioManager.Play("PACMAROOM", loop: true, volume: 0.5f);
     }
 
     public void CollectResetables()
@@ -151,6 +152,7 @@ public class Game : Singleton<Game>
     List<int> _pigs;
     public List<int> Pigs => _pigs;
     public int EndScore { get; set; }
+    public int TotalCoins { get; set; }
     public int EndCoins => _collectibles;
     public void GoToFinal()
     {
