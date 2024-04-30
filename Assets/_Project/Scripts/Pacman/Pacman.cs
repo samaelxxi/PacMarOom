@@ -67,6 +67,8 @@ public class Pacman : MonoBehaviour
 
     public void Heal()
     {
+        if (_health >= _stats.Health)
+            return;
         SetHealth(_stats.Health);
         OnHealthChanged?.Invoke(_health);
         OnHeal?.Invoke();
