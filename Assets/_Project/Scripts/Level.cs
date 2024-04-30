@@ -40,6 +40,7 @@ public class Level : MonoBehaviour
             _worldName = worldName;
             OnNewWorld?.Invoke(_worldName);
         }
+        Game.Instance.AudioManager.Play("powerUp10");
         CheckPointAmmo = Game.Instance.Pacman.WierdWeapon.Ammo;
         Game.Instance.Pacman.Heal();
     }
